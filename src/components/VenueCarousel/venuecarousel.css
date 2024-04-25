@@ -1,0 +1,38 @@
+.TOP-RATED_CAROUSEL {
+  height: 50vh;
+}
+
+.carousel-background {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .carousel-background {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+.background-filter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: radial-gradient(transparent, #000000de);
+  filter: opacity(0.5);
+}
+
+.CAROUSEL-CONTENT {
+    position: relative;
+    z-index: 2;
+}
+
+.NAVIGATION_CAROUSEL {
+  z-index: 3;
+}
+
+  

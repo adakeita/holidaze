@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:linear-gradient(90deg, rgb(255 151 97) 20%, #fff789f7 80%);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.MAIN-CONTENT {
+  height: 100%;
+}
+
+main {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.PAGE-CONTAINER {
+  width: 95%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+
+}

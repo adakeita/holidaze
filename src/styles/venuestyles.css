@@ -1,0 +1,8 @@
+.PAGE-CONTAINER .CONTAINER_VENUECARD {
+    box-shadow: 4px 6px 12px 0px #7c6136ad;
+}
+
+.HEADER-SORTING-WRAPPER {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.75) 5%, rgba(0, 0, 0, 0) 95%);
+}
