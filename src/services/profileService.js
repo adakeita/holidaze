@@ -21,7 +21,7 @@ export const updateUserProfile = async (
   }
 };
 
-// Retrieve user profile with optional detailed inclusion
+// Retrieve user profile detailed inclusion
 export const getUserProfile = async (
   profileName,
   accessToken,
@@ -73,7 +73,7 @@ export const getAllProfiles = async (apiKey) => {
   }
 };
 
-// Retrieve a single user by ID,
+// Retrieve a single user by ID
 export const getProfileById = async (id, apiKey) => {
   try {
     return await fetchAPI(`profiles/${id}`, "GET", null, null, apiKey);

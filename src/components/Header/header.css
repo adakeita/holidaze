@@ -1,0 +1,54 @@
+.HEADER-CONTENT {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.MOBILE-MENU-WRAPPER {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.LOGO-WRAPPER {
+    max-width: 75px;
+    display: flex;
+    justify-content: center;
+}
+
+.HAMBURGER-BTN {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+}
+
+.MENU-CONTENT-WRAPPER {
+    width: 100%;
+    flex-direction: column;
+    padding: 0.5em 0;
+    margin: 2em 0;
+}
+
+.SEARCH-WRAPPER {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em 0;
+    transition: all 0.3s ease-in-out;
+}
+
+@media screen and (min-width: 640px) {
+    .HEADER-CONTENT {
+        flex-direction: row;
+    }
+
+    .MOBILE-MENU-WRAPPER {
+        width: 20%;
+    }
+}

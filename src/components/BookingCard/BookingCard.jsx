@@ -55,6 +55,14 @@ const BookingCard = ({ booking }) => {
               </span>
             )}
           </div>
+          <div className="VIEVMORE-BTN">
+            <button
+              onClick={() => navigate(`/venues/${venue.id}`)}
+              className="VIEWMORE-BTN w-full p-2 rounded-md bg-logo-green text-center text-white mt-2"
+            >
+              View more
+            </button>
+          </div>
         </div>
       </section>
     </div>

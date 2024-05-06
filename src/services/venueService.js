@@ -1,6 +1,13 @@
 import { fetchAPI } from "./apiService";
 
-export const fetchVenues = async (queryParams = "", apiKey) => {
+export const fetchVenues = async (
+  page = 1,
+  limit = 20,
+  sort = "created",
+  sortOrder = "desc",
+  apiKey
+) => {
+  const queryParams = `?limit=${limit}&page=${page}&sort=${sort}&sortOrder=${sortOrder}`;
   try {
     return await fetchAPI(
       `holidaze/venues${queryParams}`,
@@ -15,7 +22,6 @@ export const fetchVenues = async (queryParams = "", apiKey) => {
   }
 };
 
-// Fetch a single venue by ID
 export const fetchVenueById = async (id, apiKey) => {
   try {
     return await fetchAPI(`holidaze/venues/${id}`, "GET", null, null, apiKey);
@@ -26,29 +32,29 @@ export const fetchVenueById = async (id, apiKey) => {
 };
 
 export const fetchTopRatedVenues = async (apiKey) => {
-  const queryParams = "?sort=rating&sortOrder=desc&limit=25";
+  const queryParams = "?sort=rating&sortOrder=desc&limit=50"; // Increase limit to ensure more data
   try {
-    const response = await fetchVenues(queryParams, apiKey);
-    const venues = response.data;
-    const uniqueVenues = getUniqueVenuesByNames(venues);
-    randomizeVenues(uniqueVenues);
-    console.log("Top-rated venues:", uniqueVenues);
-    return uniqueVenues.slice(0, 5);
+    const response = await fetchAPI(
+      `holidaze/venues${queryParams}`,
+      "GET",
+      null,
+      null,
+      apiKey
+    );
+    if (response.data && response.data.length) {
+      const uniqueVenues = getUniqueVenuesByNames(response.data);
+      randomizeVenues(uniqueVenues);
+      return uniqueVenues.slice(0, Math.min(5, uniqueVenues.length));
+    } else {
+      return [];
+    }
   } catch (error) {
     console.error("Failed to fetch top-rated venues:", error.message);
     throw new Error("Failed to fetch top-rated venues");
   }
 };
 
-const randomizeVenues = (venues) => {
-  for (let i = venues.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * i);
-    const temp = venues[i];
-    venues[i] = venues[j];
-    venues[j] = temp;
-  }
-};
-
+// Ensure uniqueness based on venue names
 const getUniqueVenuesByNames = (venues) => {
   const unique = {};
   venues.forEach((venue) => {
@@ -57,6 +63,14 @@ const getUniqueVenuesByNames = (venues) => {
     }
   });
   return Object.values(unique);
+};
+
+// Randomize venues to vary
+const randomizeVenues = (venues) => {
+  for (let i = venues.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [venues[i], venues[j]] = [venues[j], venues[i]];
+  }
 };
 
 // Create a new venue

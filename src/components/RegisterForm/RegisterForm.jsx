@@ -1,17 +1,20 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { registerUser } from "../../services/authService";
+import { useAuth } from "../../contexts/AuthContext";
 
 const RegisterForm = () => {
+  const { register, authState } = useAuth();
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     venueManager: false,
   });
+
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
+    const handleChange = (e) => {
     const { name, value, checked } = e.target;
     setFormData({
       ...formData,

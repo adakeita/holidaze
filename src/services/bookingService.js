@@ -107,7 +107,7 @@ export const deleteBooking = async (bookingId, accessToken, apiKey) => {
   }
 };
 
-//bookings by venueId through a query parameter
+//bookings by venueId
 export const fetchBookingsByVenue = async (venueId, accessToken, apiKey) => {
   try {
     const endpoint = `holidaze/bookings?venueId=${venueId}`;

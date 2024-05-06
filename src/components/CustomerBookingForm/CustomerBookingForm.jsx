@@ -9,7 +9,7 @@ const CustomerBookingForm = ({ venueId }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [guests, setGuests] = useState(1);
-  const { accessToken, apiKey } = useAuth();
+  const { accessToken, apiKey, authState } = useAuth();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [bookedDates, setBookedDates] = useState([]);
@@ -20,7 +20,8 @@ const CustomerBookingForm = ({ venueId }) => {
         const bookings = await fetchBookingsByVenue(
           venueId,
           accessToken,
-          apiKey
+          apiKey,
+          authState
         );
         const bookedRanges = bookings.data.map((booking) => {
           return {
@@ -56,7 +57,7 @@ const CustomerBookingForm = ({ venueId }) => {
 
     try {
       const response = await createBooking(bookingData, accessToken, apiKey);
-      console.log("Booking response:", response); 
+      console.log("Booking response:", response);
       setMessage("Booking successful!");
     } catch (error) {
       console.error("Booking error:", error);
