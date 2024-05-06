@@ -28,13 +28,16 @@
 
 .MENU-CONTENT-WRAPPER {
     width: 100%;
+    display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     padding: 0.5em 0;
     margin: 2em 0;
 }
 
 .SEARCH-WRAPPER {
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -43,12 +46,59 @@
     transition: all 0.3s ease-in-out;
 }
 
+.SEARCHBAR {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 12px;
+    padding: 0.5em;
+    box-shadow: inset 1px 2px 4px #726d69e8;
+    font-style: italic;
+    transition: all 0.3s ease-in-out;
+}
+
+.NAVLINKS-WRAPPER {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+}
+
 @media screen and (min-width: 640px) {
     .HEADER-CONTENT {
+        width: 95%;
         flex-direction: row;
     }
 
     .MOBILE-MENU-WRAPPER {
-        width: 20%;
+        width: 10%;
+    }
+
+    .MENU-CONTENT-WRAPPER {
+        width: 90%;
+        margin: 0 auto;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .SEARCH-WRAPPER {
+        display: flex;
+        width: 30%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .SEARCHBAR {
+        justify-content: center;
+        background: white;
+        border-radius: 6px;
+    }
+
+    .NAVLINKS-WRAPPER {
+        width: 45%;
+        flex-direction: row;
+        justify-content: space-between;
     }
 }
