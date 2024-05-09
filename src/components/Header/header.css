@@ -1,5 +1,5 @@
 .HEADER-CONTENT {
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -63,13 +63,19 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
 
+.NAVLINK_NAVIGATION {
+    font-size: 1.2rem;
+    text-decoration: underline;
 }
 
 @media screen and (min-width: 640px) {
     .HEADER-CONTENT {
         width: 95%;
+        max-width: 1450px;
         flex-direction: row;
+        align-items: center;
     }
 
     .MOBILE-MENU-WRAPPER {
@@ -81,6 +87,7 @@
         margin: 0 auto;
         flex-direction: row;
         justify-content: space-evenly;
+        align-items: end;
     }
 
     .SEARCH-WRAPPER {
@@ -97,8 +104,14 @@
     }
 
     .NAVLINKS-WRAPPER {
-        width: 45%;
+        width: 40%;
         flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .MENU-CONTENT-WRAPPER {
         justify-content: space-between;
     }
 }

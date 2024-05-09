@@ -13,21 +13,21 @@ const Header = ({ onSearchChange }) => {
   };
 
   return (
-    <header className="HEADER-CONTAINER py-4">
+    <header className="HEADER-CONTAINER tw-py-4">
       <div className="HEADER-CONTENT">
         <div className="MOBILE-MENU-WRAPPER">
-          <div className="LOGO-WRAPPER  sm:w-full md:w-2/1">
+          <div className="LOGO-WRAPPER  sm:tw-w-full md:tw-w-2/1">
             <Link to="/" className="LOGO-LINK">
               <img src={Logo} alt="Logo-link" />
             </Link>
           </div>
           {/* Hamburger Button */}
           <button
-            className="HAMBURGER-BTN sm:hidden"
+            className="HAMBURGER-BTN sm:tw-hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <svg
-              className="HAMBURGER-ICON h-9 w-9 items-center"
+              className="HAMBURGER-ICON tw-h-9 tw-w-9 tw-items-center"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -44,8 +44,8 @@ const Header = ({ onSearchChange }) => {
 
         {/* Screen size >= 640px && isMenuOpen*/}
         <div
-          className={`MENU-CONTENT-WRAPPER sm:py-0 ${
-            isMenuOpen ? "flex" : "hidden sm:flex"
+          className={`MENU-CONTENT-WRAPPER sm:tw-py-0 ${
+            isMenuOpen ? "tw-flex" : "tw-hidden sm:tw-flex"
           }`}
         >
           <section className="SEARCH-WRAPPER">
@@ -55,7 +55,7 @@ const Header = ({ onSearchChange }) => {
               id="search"
               placeholder="Search for venues..."
               onChange={(e) => onSearchChange(e.target.value)}
-              className="SEARCHBAR focus:outline-none focus:ring-2 focus:ring-logo-green focus:border-transparent hover:scale-105"
+              className="SEARCHBAR focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-logo-green focus:tw-border-transparent hover:tw-scale-105"
             />
           </section>
           {/* Navigation Links */}

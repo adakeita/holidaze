@@ -5,17 +5,19 @@ export const fetchVenues = async (
   limit = 20,
   sort = "created",
   sortOrder = "desc",
+  metaFilters = {},
   apiKey
 ) => {
-  const queryParams = `?limit=${limit}&page=${page}&sort=${sort}&sortOrder=${sortOrder}`;
+  let queryParams = `?limit=${limit}&page=${page}&sort=${sort}&sortOrder=${sortOrder}`;
   try {
-    return await fetchAPI(
+    const response = await fetchAPI(
       `holidaze/venues${queryParams}`,
       "GET",
       null,
       null,
       apiKey
     );
+    return response;
   } catch (error) {
     console.error("Failed to fetch venues:", error.message);
     throw new Error("Failed to fetch venues");
@@ -32,7 +34,7 @@ export const fetchVenueById = async (id, apiKey) => {
 };
 
 export const fetchTopRatedVenues = async (apiKey) => {
-  const queryParams = "?sort=rating&sortOrder=desc&limit=50"; // Increase limit to ensure more data
+  const queryParams = "?sort=rating&sortOrder=desc&limit=50";
   try {
     const response = await fetchAPI(
       `holidaze/venues${queryParams}`,
@@ -54,7 +56,7 @@ export const fetchTopRatedVenues = async (apiKey) => {
   }
 };
 
-// Ensure uniqueness based on venue names
+//Unique venue names
 const getUniqueVenuesByNames = (venues) => {
   const unique = {};
   venues.forEach((venue) => {
@@ -65,7 +67,7 @@ const getUniqueVenuesByNames = (venues) => {
   return Object.values(unique);
 };
 
-// Randomize venues to vary
+// Randomize venues
 const randomizeVenues = (venues) => {
   for (let i = venues.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));

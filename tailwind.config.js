@@ -1,8 +1,9 @@
 import { se } from "date-fns/locale";
-const plugin = require('tailwindcss/plugin')
+const plugin = require("tailwindcss/plugin");
 
 /** @type {import('tailwindcss').Config} */
 export default {
+  prefix: "tw-",
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
