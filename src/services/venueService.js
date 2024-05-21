@@ -1,22 +1,10 @@
 import { fetchAPI } from "./apiService";
 
-export const fetchVenues = async (
-  page = 1,
-  limit = 20,
-  sort = "created",
-  sortOrder = "desc",
-  metaFilters = {},
-  apiKey
-) => {
-  let queryParams = `?limit=${limit}&page=${page}&sort=${sort}&sortOrder=${sortOrder}`;
+export const fetchVenues = async (queryParams) => {
+  console.log("Query Params:", queryParams);
   try {
-    const response = await fetchAPI(
-      `holidaze/venues${queryParams}`,
-      "GET",
-      null,
-      null,
-      apiKey
-    );
+    const response = await fetchAPI(`holidaze/venues${queryParams}`, "GET");
+    console.log("API Response Data:", response.data);
     return response;
   } catch (error) {
     console.error("Failed to fetch venues:", error.message);
@@ -74,6 +62,24 @@ const randomizeVenues = (venues) => {
     [venues[i], venues[j]] = [venues[j], venues[i]];
   }
 };
+
+// venueservice.js
+export const fetchLatestUniqueVenues = async () => {
+  console.log("Fetching latest unique venues");
+  try {
+    const response = await fetchAPI(`holidaze/venues?limit=20&sort=created&sortOrder=desc`, "GET");
+    console.log("API Response Data:", response.data);
+    const uniqueVenues = Array.from(new Set(response.data.map(venue => venue.name)))
+      .slice(0, 5)
+      .map(name => response.data.find(venue => venue.name === name));
+    console.log("Filtered unique venues:", uniqueVenues); // Add this line
+    return uniqueVenues;
+  } catch (error) {
+    console.error("Failed to fetch latest unique venues:", error.message);
+    throw new Error("Failed to fetch latest unique venues");
+  }
+};
+
 
 // Create a new venue
 export const createVenue = async (venueData, accessToken, apiKey) => {

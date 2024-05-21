@@ -48,9 +48,17 @@ const VenueCarousel = () => {
             <div className="background-filter"></div>
             <div className="CAROUSEL-CONTENT tw-h-full tw-py-4 tw-px-2">
               <div className="HEADER-WRAPPER_CAROUSEL tw-h-1/2">
-                <h2 className="HEADER_CAROUSEL tw-text-2xl tw-font-bold tw-text-white tw-w-fit tw-px-4 tw-text-shadow-md tw-shadow-black">
+                <h1 className="HEADER_CAROUSEL tw-font-bold tw-w-fit ">
                   {venue.name}
-                </h2>
+                </h1>
+                <div className="RATING-CAROUSEL">
+                  <span className="tw-text-white tw-text-lg tw-font-semibold tw-shadow-black">
+                    {venue.rating}
+                  </span>
+                  <span className="tw-text-white tw-text-sm tw-shadow-black">
+                    /5
+                  </span>
+                </div>
               </div>
               <div className="DETAILS-WRAPPER_CAROUSEL tw-h-1/2 tw-w-full tw-flex tw-flex-row tw-items-center tw-flex-wrap tw-content-end tw-justify-between tw-sm:px-6">
                 <div className="EXTRAS-WRAPPER_CAROUSEL">

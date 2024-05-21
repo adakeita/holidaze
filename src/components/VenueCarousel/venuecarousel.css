@@ -3,16 +3,16 @@
 }
 
 .carousel-background {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-  }
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
 
-  .carousel-background {
-    position: relative;
-    background-size: cover;
-    background-position: center;
+.carousel-background {
+  position: relative;
+  background-size: cover;
+  background-position: center;
 }
 
 .background-filter {
@@ -22,17 +22,22 @@
   right: 0;
   bottom: 0;
   z-index: 1;
-  background: radial-gradient(transparent, #000000de);
+  background: rgb(0 0 0 / 63%);
   filter: opacity(0.5);
 }
 
 .CAROUSEL-CONTENT {
-    position: relative;
-    z-index: 2;
+  position: relative;
+  z-index: 2;
+}
+
+.HEADER_CAROUSEL {
+  color: white;
+  font-size: 2.7rem;
+  font-weight: 700;
+  text-shadow: 5px 5px 6px rgb(0 0 0 / 81%);
 }
 
 .NAVIGATION_CAROUSEL {
   z-index: 3;
 }
-
-  

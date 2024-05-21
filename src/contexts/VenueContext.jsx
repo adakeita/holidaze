@@ -6,70 +6,69 @@ const VenueContext = createContext();
 
 export const VenueProvider = ({ children }) => {
   const [allVenues, setAllVenues] = useState([]);
+  const [latestUniqueVenues, setLatestUniqueVenues] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [sort, setSort] = useState({ field: "created", order: "desc" });
   const { apiKey } = useAuth();
 
-  const fetchVenues = async (
-    page,
-    filters,
-    sort = "created",
-    sortOrder = "desc"
-  ) => {
+  const fetchVenues = async () => {
+    if (loading) return;
     setLoading(true);
+    let queryParams = `?limit=20&page=${currentPage}&sort=${sort.field}&sortOrder=${sort.order}`;
+    if (apiKey) {
+      queryParams += `&apiKey=${apiKey}`;
+    }
     try {
-      let fetchedData = [];
-      console.log("Fetching venues...");
-      let attemptPage = page;
-      console.log("Attempt page:", attemptPage);
-      while (fetchedData.length < 20 && hasMore) {
-        const response = await VenueService.fetchVenues(
-          attemptPage++,
-          20,
-          sort,
-          sortOrder,
-          apiKey
-        );
-        if (response.data) {
-          const filteredData = response.data.filter((venue) => {
-            return Object.entries(filters).every(([key, value]) => {
-              return !value || (venue.meta && venue.meta[key]);
-            });
-          });
-          fetchedData = [...fetchedData, ...filteredData];
-          console.log("Fetched data:", fetchedData.length);
-          console.log("Response venues:", response.data);
-          setHasMore(response.data.length === 20);
-        } else {
-          setHasMore(false);
-        }
+      const response = await VenueService.fetchVenues(queryParams);
+      if (response.data) {
+        const venueMap = new Map();
+        response.data.forEach((venue) => venueMap.set(venue.id, venue));
+        setAllVenues(Array.from(venueMap.values()));
+        setHasMore(response.data.length === 20);
+      } else {
+        setHasMore(false);
       }
-
-      const newVenues = fetchedData.slice(0, 20);
-      const venueMap = new Map(allVenues.map((v) => [v.id, v]));
-      newVenues.forEach((venue) => venueMap.set(venue.id, venue));
-      setAllVenues(Array.from(venueMap.values()));
     } catch (error) {
       console.error("Fetching venues failed:", error.message);
+      console.error("Query Params:", queryParams);
     } finally {
       setLoading(false);
     }
   };
 
+  const fetchLatestUniqueVenues = async () => {
+    try {
+      const uniqueVenues = await VenueService.fetchLatestUniqueVenues();
+      setLatestUniqueVenues(uniqueVenues);
+      console.log("Latest unique venues:", uniqueVenues);
+    } catch (error) {
+      console.error("Fetching latest unique venues failed:", error.message);
+    }
+  };
+
   useEffect(() => {
-    fetchVenues(currentPage, {});
-  }, [apiKey, currentPage]);
+    fetchVenues();
+  }, [currentPage, sort.field, sort.order]);
+
+  useEffect(() => {
+    fetchLatestUniqueVenues();
+  }, []);
 
   return (
     <VenueContext.Provider
       value={{
         venues: allVenues,
+        latestUniqueVenues,
         fetchVenues,
+        fetchLatestUniqueVenues,
         currentPage,
         setCurrentPage,
         hasMore,
         loading,
+        sort,
+        setSort,
       }}
     >
       {children}

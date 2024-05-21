@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import HomePage from "../pages/Home";
+import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Venues from "../pages/Venues";
@@ -9,7 +9,7 @@ import Dashboard from "../pages/Dashboard";
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<Home />} />
       <Route path="/venues" element={<Venues />} />
       <Route path="/venues/:id" element={<VenueDetails />} />
       <Route path="/dashboard" element={<Dashboard />} />
