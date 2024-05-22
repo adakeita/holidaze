@@ -1,0 +1,102 @@
+.SINGLEVENUE-CARD {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.IMG_SINGLEVENUE {
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.IMG-OVERLAY_SINGLEVENUE {
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    padding: 20px;
+    width: 100%;
+    text-align: left;
+    position: absolute;
+    bottom: 0;
+}
+
+.IMG-INFO_SINGLEVENUE {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.HEADER_SINGLEVENUE-IMG {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.NAME_SINGLEVENUE-IMG {
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 3px 3px 6px #232729e6;
+}
+
+.RATING-WRAPPER_SINGLEVENUE-IMG {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.EXTRAS-WRAPPER_SINGLEVENUE-IMG {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.BOTTOM-SECTION_SINGLEVENUE {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.VENUEINFORMATION_BOTTOM-SECTION {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.EXTRAS-WRAPPER_SINGLEVENUE-IMG .stars {
+    color: gold;
+    text-shadow: 3px 3px 6px #232729e6;
+}
+
+.badge {
+    background: white;
+    color: black;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+
+.venue-location,
+.venue-description,
+.venue-price,
+.venue-ammeneties {
+    margin: 1rem 0;
+}
+
+.venue-ammeneties ul {
+    list-style: none;
+    padding: 0;
+}
+
+.venue-ammeneties li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}

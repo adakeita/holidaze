@@ -32,8 +32,12 @@ export const fetchVenues = async (queryParams) => {
 
 // Function to fetch a venue by ID
 export const fetchVenueById = async (id) => {
+  const queryParams = "?_bookings=true";
   try {
-    const response = await fetchAPI(`holidaze/venues/${id}`, "GET");
+    const response = await fetchAPI(
+      `holidaze/venues/${id}${queryParams}`,
+      "GET"
+    );
     return response.data;
   } catch (error) {
     console.error(`Failed to fetch venue with ID ${id}:`, error.message);

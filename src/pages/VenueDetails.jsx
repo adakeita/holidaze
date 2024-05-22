@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchVenueById } from "../services/venueService";
 import SingleVenueCard from "../components/SingleVenueCard/SingleVenueCard";
-import CustomerBookingForm from "../components/CustomerBookingForm/CustomerBookingForm";
 import { useAuth } from "../contexts/AuthContext";
 
 const VenueDetails = () => {
@@ -34,12 +33,6 @@ const VenueDetails = () => {
   return (
     <div className="venue-details-page">
       <SingleVenueCard venue={venue} />
-      {authState.isAuthenticated && (
-        <div className="booking-section">
-          {venue && <CustomerBookingForm venueId={venue.id} />}
-        </div>
-      )}
-      {!authState.isAuthenticated && <p>Log in to book this venue.</p>}
     </div>
   );
 };
