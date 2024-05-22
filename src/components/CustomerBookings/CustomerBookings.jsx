@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { fetchBookingsByProfile } from "../../services/bookingService";
 import BookingCard from "../BookingCard/BookingCard";
+import "../../styles/dashboard.css";
 
 const CustomerBookingOverview = () => {
   const { authState } = useAuth();
@@ -28,7 +29,7 @@ const CustomerBookingOverview = () => {
   }, [authState]);
 
   return (
-    <section className="CUSTOMER-BOOKINGS mx-auto w-11/12">
+    <section className="booking-overview">
       <h2>Your Bookings</h2>
       {bookings.length > 0 ? (
         bookings.map((booking) => (

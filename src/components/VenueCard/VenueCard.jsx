@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import "./venuecard.css";
 
 const VenueCard = ({ venue }) => {
@@ -31,9 +32,11 @@ const VenueCard = ({ venue }) => {
           </span>
         </div>
         <div className="EXTRAS-WRAPPER_VENUECARD">
-          {venue.meta.wifi && <span className="tw-badge tw-badge-accent tw-mx-1">Wifi</span>}
+          {venue.meta.wifi && (
+            <span className="tw-badge tw-badge-accent tw-mx-1">Wifi</span>
+          )}
           {venue.meta.pets && (
-            <span className="tw-badge  tw-badge-accent">Pets Allowed</span>
+            <span className="tw-badge tw-badge-accent">Pets Allowed</span>
           )}
           {venue.meta.breakfast && (
             <span className="tw-badge tw-badge-accent tw-mx-1">Breakfast</span>
@@ -45,6 +48,10 @@ const VenueCard = ({ venue }) => {
       </section>
     </div>
   );
+};
+
+VenueCard.propTypes = {
+  venue: PropTypes.object.isRequired,
 };
 
 export default VenueCard;

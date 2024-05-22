@@ -12,6 +12,7 @@ const Filters = ({ onSortChange }) => {
     const [field, order] = e.target.value.split(":");
     onSortChange(field, order);
   };
+
   return (
     <div className="FILTER-CONTAINER">
       <h2 className="FILTER-HEADER">Filter</h2>

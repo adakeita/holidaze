@@ -22,10 +22,11 @@ export const login = async (email, password) => {
 
 export const registerUser = async (userData) => {
   try {
+    console.log("Registering user with data:", userData);
     const response = await fetchAPI("auth/register", "POST", userData);
     return response;
   } catch (error) {
-    console.error("Registration failed:", error);
+    console.error("Registration failed:", error.message);
     throw error;
   }
 };
@@ -51,14 +52,5 @@ export const deleteUserProfile = async (profileName, token, apiKey) => {
   } catch (error) {
     console.error("Deleting user profile failed:", error);
     throw error;
-  }
-};
-
-export const deleteUser = async (profileName, accessToken, apiKey) => {
-  try {
-    return await fetchAPI(`profiles/${profileName}`, "DELETE", null, accessToken, apiKey);
-  } catch ( error ) {
-    console.error(`Error deleting user profile ${profileName}:`, error.message);
-    throw new Error(`Error deleting user profile: ${error.message}`);
   }
 };

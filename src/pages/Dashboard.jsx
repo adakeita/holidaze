@@ -3,6 +3,7 @@ import AvatarManagement from "../components/AvatarManagement/AvatarManagement";
 import VenueManagement from "../components/VenueManagement/VenueManagement";
 import CustomerBookings from "../components/CustomerBookings/CustomerBookings";
 import { useNavigate } from "react-router-dom";
+import "../styles/dashboard.css"; // Import the CSS file
 
 const Dashboard = () => {
   const { authState, isLoading } = useAuth();
@@ -19,16 +20,27 @@ const Dashboard = () => {
     return (
       <div className="PAGE-CONTAINER">
         <h1>Dashboard</h1>
-        <p>You need to be logged in to access the dashboard. Rediredicting to login</p>
+        <p>
+          You need to be logged in to access the dashboard. Redirecting to login
+        </p>
       </div>
     );
   }
 
+  const userTitle = authState.isVenueManager ? "Venue Manager" : "Adventurer";
+
   return (
-    <div className="PAGE-CONTAINER">
-      <h1>Dashboard</h1>
-      <AvatarManagement />
-      {authState.isVenueManager ? <VenueManagement /> : <CustomerBookings />}
+    <div className="dashboard-container">
+      <header className="dashboard-header">
+        <h1>Dashboard</h1>
+        <p className="user-title">{userTitle}</p>
+      </header>
+      <div className="avatar-section">
+        <AvatarManagement />
+      </div>
+      <div className="bookings-section">
+        {authState.isVenueManager ? <VenueManagement /> : <CustomerBookings />}
+      </div>
     </div>
   );
 };

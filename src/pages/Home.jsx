@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useVenues } from "../contexts/VenueContext";
+import { fetchLatestUniqueVenues } from "../services/venueService";
 import Mainimg from "../assets/img/home-img.png";
 import View from "../assets/img/view.png";
 import Register from "../assets/svg/signup.svg";
@@ -15,14 +15,24 @@ import "../styles/homestyles.css";
 
 function Home() {
   const navigate = useNavigate();
-  const { latestUniqueVenues } = useVenues();
+  const [latestUniqueVenues, setLatestUniqueVenues] = useState([]);
 
   useEffect(() => {
-    console.log("latestUniqueVenues from homepage:", latestUniqueVenues);
-  }, [latestUniqueVenues]);
+    const loadLatestUniqueVenues = async () => {
+      try {
+        const venues = await fetchLatestUniqueVenues();
+        setLatestUniqueVenues(venues);
+      } catch (error) {
+        console.error("Failed to load latest unique venues:", error);
+      }
+    };
+
+    loadLatestUniqueVenues();
+  }, []);
+
 
   const handleNavigate = () => {
-    navigate("/");
+    navigate("/venues");
   };
 
   return (
@@ -49,7 +59,9 @@ function Home() {
                 alt="people looking at mountain view"
                 className="IMG_TOP-SECTION"
               />
-              <div className="POLAROID-TEXT">Looking at the Mountain View 2023</div>
+              <div className="POLAROID-TEXT">
+                Looking at the Mountain View 2023
+              </div>
             </div>
           </div>
         </section>

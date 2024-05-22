@@ -150,7 +150,7 @@ polaroid
     filter: drop-shadow(1px 2px 1px rgb(0 0 0 / 0.4));
 }
 
-/*PAGESTYLES - SECTIONS*/
+/*PAGESTYLE - SECTIONS*/
 
 /*hero*/
 .HERO-WRAPPER_HOME {
@@ -213,7 +213,7 @@ polaroid
 
 /*customer section*/
 .CUSTOMER-SECTION-WRAPPER {
-    margin: 5em 0; /* Increased margin */
+    margin: 5em 0;
     display: flex;
     flex-direction: column;
 }
@@ -229,7 +229,7 @@ polaroid
 /*venue section*/
 
 .VENUE-SECTION-WRAPPER {
-    margin: 5em 0; /* Increased margin */
+    margin: 5em 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -247,11 +247,11 @@ polaroid
 /*middle section*/
 
 .MIDDLE-SECTION-WRAPPER {
+    width: 100%;
+    margin: 5em 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    margin: 5em 0; /* Increased margin */
 }
 
 .MIDDLE-IMG-WRAPPER {
@@ -265,7 +265,7 @@ polaroid
 /*view venues section*/
 
 .VIEW-VENUES-SECTION {
-    margin: 5em 0; /* Increased margin */
+    margin: 5em 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -316,7 +316,8 @@ polaroid
 }
 
 .VIEW-VENUES-BUTTON:hover .VIEW-VENUES-IMAGE {
-    filter: blur(1px) brightness(1.5);
+    filter: blur(1px) brightness(1.2);
+    border: 2px solid #fa9e69;
 }
 
 .VIEW-VENUES-TEXT {

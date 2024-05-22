@@ -1,11 +1,10 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import * as authService from "../services/authService";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const storedAuthState = JSON.parse(localStorage.getItem("authState"));
-  const initialAuthState = storedAuthState || {
+  const initialAuthState = {
     isAuthenticated: false,
     user: null,
     accessToken: null,
@@ -13,29 +12,27 @@ export const AuthProvider = ({ children }) => {
     isVenueManager: false,
   };
 
-  const [authState, setAuthState] = useState(initialAuthState);
+  const [authState, setAuthState] = useState(() => {
+    const storedAuthState = sessionStorage.getItem("authState");
+    return storedAuthState ? JSON.parse(storedAuthState) : initialAuthState;
+  });
 
-  const register = async (name, email, password) => {
+  // This useEffect should only run once when the component mounts
+  useEffect(() => {
+    const storedAuthState = sessionStorage.getItem("authState");
+    if (storedAuthState) {
+      setAuthState(JSON.parse(storedAuthState));
+    }
+  }, []);
+
+  const register = async (userData) => {
     try {
-      const { data } = await authService.register(name, email, password);
-      const authData = {
-        isAuthenticated: true,
-        user: data,
-        accessToken: data.accessToken,
-        apiKey: data.apiKey,
-        isVenueManager: data.venueManager || false,
-      };
-      localStorage.setItem("authState", JSON.stringify(authData));
-      setAuthState(authData);
+      const { data } = await authService.registerUser(userData);
+      console.log("Registration successful:", data);
+      await login(userData.email, userData.password); // Automatically log in after registration
     } catch (error) {
       console.error("Registration failed:", error.message);
-      setAuthState({
-        isAuthenticated: false,
-        user: null,
-        accessToken: null,
-        apiKey: null,
-        isVenueManager: false,
-      });
+      throw error; // Re-throw the error to be caught in the form
     }
   };
 
@@ -49,29 +46,17 @@ export const AuthProvider = ({ children }) => {
         apiKey: data.apiKey,
         isVenueManager: data.venueManager || false,
       };
-      localStorage.setItem("authState", JSON.stringify(authData));
+      sessionStorage.setItem("authState", JSON.stringify(authData));
       setAuthState(authData);
     } catch (error) {
       console.error("Login failed:", error.message);
-      setAuthState({
-        isAuthenticated: false,
-        user: null,
-        accessToken: null,
-        apiKey: null,
-        isVenueManager: false,
-      });
+      throw error; // Re-throw the error to be caught in the form
     }
   };
 
   const logout = () => {
-    localStorage.removeItem("authState");
-    setAuthState({
-      isAuthenticated: false,
-      user: null,
-      accessToken: null,
-      apiKey: null,
-      isVenueManager: false,
-    });
+    sessionStorage.removeItem("authState");
+    setAuthState(initialAuthState);
   };
 
   const updateUserInfo = (newUserInfo) => {
@@ -79,12 +64,14 @@ export const AuthProvider = ({ children }) => {
       ...authState,
       user: { ...authState.user, ...newUserInfo },
     };
-    localStorage.setItem("authState", JSON.stringify(updatedState));
+    sessionStorage.setItem("authState", JSON.stringify(updatedState));
     setAuthState(updatedState);
   };
 
   return (
-    <AuthContext.Provider value={{ authState, login, logout, updateUserInfo, register }}>
+    <AuthContext.Provider
+      value={{ authState, login, logout, updateUserInfo, register }}
+    >
       {children}
     </AuthContext.Provider>
   );

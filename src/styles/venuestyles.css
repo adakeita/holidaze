@@ -1,6 +1,6 @@
 .VENUES-CONTAINER {
     overflow-y: scroll;
-    height: 75vh;
+    min-height: 75vh;
     padding: 1.5em 0;
 }
 

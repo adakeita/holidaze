@@ -18,8 +18,14 @@ export async function fetchAPI(
     body: data ? JSON.stringify(data) : null,
   };
 
+  console.log("API Request:", { endpoint, options });
+
   const response = await fetch(`${API_BASE_URL}/${endpoint}`, options);
+  console.log("API Response:", response);
+
   if (!response.ok) {
+    const errorData = await response.json();
+    console.error("API Error Data:", errorData);
     throw new Error("Network response was not ok");
   }
   return response.json();
@@ -27,16 +33,12 @@ export async function fetchAPI(
 
 export const fetchSearchResults = async (searchTerm) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/holidaze/venues`);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const { data } = await response.json();
+    const response = await fetchAPI("holidaze/venues");
+    const { data } = response;
 
     const filteredData = data.filter((venue) =>
       venue.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
     console.log("Fetched venues:", filteredData);
 
     return filteredData;

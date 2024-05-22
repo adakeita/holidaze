@@ -1,33 +1,26 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { fetchTopRatedVenues } from "../../services/venueService.js";
+import { fetchTopRatedVenues } from "../../services/venueService";
 import "./venuecarousel.css";
 
 const VenueCarousel = () => {
   const [topRatedVenues, setTopRatedVenues] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const loadTopRatedVenues = async () => {
       try {
-        let venues = await fetchTopRatedVenues("");
-        venues = venues.filter(
-          (venue) =>
-            venue.media[0] !== "https://url.com/image.jpg" &&
-            !venue.name.toLowerCase().includes("test")
-        );
+        const venues = await fetchTopRatedVenues();
         setTopRatedVenues(venues);
       } catch (error) {
         console.error("Failed to load top-rated venues:", error);
       }
     };
 
+    console.log("VenueCarousel mounted");
     loadTopRatedVenues();
+    return () => {
+      console.log("VenueCarousel unmounted");
+    };
   }, []);
-
-  const handleDirectionClick = (direction) => {
-    e.preventDefault();
-  };
 
   return (
     <div className="TOP-RATED_CAROUSEL tw-carousel tw-w-full">

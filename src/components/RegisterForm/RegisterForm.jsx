@@ -3,18 +3,18 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 
 const RegisterForm = () => {
-  const { register, authState } = useAuth();
-  
+  const { register } = useAuth();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     venueManager: false,
   });
+  const [error, setError] = useState(""); // State to manage error messages
 
   const navigate = useNavigate();
 
-    const handleChange = (e) => {
+  const handleChange = (e) => {
     const { name, value, checked } = e.target;
     setFormData({
       ...formData,
@@ -24,17 +24,23 @@ const RegisterForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(""); // Clear previous error message
     try {
-      await registerUser(formData);
-      navigate("/login");
+      await register(formData); // Use the register function from AuthContext
+      navigate("/"); // Navigate to the home page or another protected route after successful registration
     } catch (error) {
       console.error("Registration failed:", error.message);
-      alert("Failed to register: " + error.message);
+      if (error.message.includes("Profile already exists")) {
+        setError("Profile already exists");
+      } else {
+        setError("Failed to register. Please try again.");
+      }
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      {error && <p style={{ color: "red" }}>{error}</p>}{" "}
       <label>
         Name:
         <input

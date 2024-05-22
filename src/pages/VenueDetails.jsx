@@ -12,13 +12,12 @@ const VenueDetails = () => {
   const [error, setError] = useState("");
 
   const { authState } = useAuth();
-  console.log(authState);
 
   useEffect(() => {
     const loadVenue = async () => {
       try {
         const fetchedVenue = await fetchVenueById(id);
-        setVenue(fetchedVenue.data);
+        setVenue(fetchedVenue);
         setLoading(false);
       } catch (err) {
         setError("Failed to fetch venue details.");

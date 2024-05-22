@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import Logo from "../../assets/svg/logoipsum.svg";
+import Logo from "../../assets/svg/holidaze-logo.svg";
 import "./header.css";
 
 const Header = ({ onSearchChange }) => {
