@@ -1,111 +1,119 @@
-
-  .dashboard-title {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .user-title {
-    font-size: 1.5rem;
-    color: #ff6347; /* Example color, adjust as needed */
-    margin-bottom: 1rem;
-  }
-  
-  .AvatarManagement,
-  .VenueManagement,
-  .CustomerBookings {
-    margin-top: 2rem;
-  }
-
-  /* dashboard.css */
 .dashboard-container {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 1em 3em;
     background-color: #fdf5e6;
-    font-family: Arial, sans-serif;
-  }
-  
-  .dashboard-header {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  
-  .dashboard-header h1 {
+    font-family: "League Spartan", sans-serif;
+}
+
+.dashboard-header {
+    padding-bottom: 2em;
+}
+
+.dashboard-header h1 {
     font-size: 2.5rem;
     color: #333;
-  }
-  
-  .user-title {
+}
+
+.user-title {
     font-size: 1.5rem;
-    color: #ff4500;
-  }
-  
-  .avatar-section {
+    color: #ff6347;
+}
+
+.TOP-SECTION_DASHBOARD {
+    height: 20rem;
+    min-height: 400px;
+    max-width: 850px;
     display: flex;
-    justify-content: center;
-    margin-bottom: 40px;
-  }
-  
-  .bookings-section {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.avatar-section {
+    display: flex;
+    height: 100%;
+    width: 50%;
+    max-width: 350px;
+}
+
+.INFO-SECTION {
+    display: flex;
+    height: 55%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.INFO-SECTION p {
+    font-size: 1.5rem;
+    color: #333;
+    text-transform: capitalize;
+}
+
+.AvatarManagement,
+.VenueManagement,
+.CustomerBookings {
+    margin-top: 2rem;
+}
+
+.bookings-section {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-  }
-  
-  .bookings-section > div {
+}
+
+.bookings-section > div {
     flex: 1;
     max-width: 32%;
     margin-bottom: 20px;
-  }
-  
-  .booking-card {
+}
+
+.booking-card {
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.2s;
-  }
-  
-  .booking-card:hover {
+}
+
+.booking-card:hover {
     transform: translateY(-10px);
-  }
-  
-  .booking-card img {
+}
+
+.booking-card img {
     width: 100%;
     height: auto;
     display: block;
-  }
-  
-  .booking-card .details {
+}
+
+.booking-card .details {
     padding: 15px;
     text-align: center;
-  }
-  
-  .booking-card .details h3 {
+}
+
+.booking-card .details h3 {
     margin: 0;
     font-size: 1.2rem;
     color: #333;
-  }
-  
-  .booking-card .details p {
+}
+
+.booking-card .details p {
     margin: 5px 0;
     font-size: 1rem;
     color: #666;
-  }
-  
-  .booking-card .details .tags {
+}
+
+.booking-card .details .tags {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 5px;
-  }
-  
-  .booking-card .details .tags span {
+}
+
+.booking-card .details .tags span {
     background: #ffeb3b;
     border-radius: 15px;
     padding: 5px 10px;
     font-size: 0.9rem;
     color: #333;
-  }
-  
-  
+}

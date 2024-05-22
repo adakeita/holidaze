@@ -3,7 +3,7 @@ import AvatarManagement from "../components/AvatarManagement/AvatarManagement";
 import VenueManagement from "../components/VenueManagement/VenueManagement";
 import CustomerBookings from "../components/CustomerBookings/CustomerBookings";
 import { useNavigate } from "react-router-dom";
-import "../styles/dashboard.css"; // Import the CSS file
+import "../styles/dashboard.css";
 
 const Dashboard = () => {
   const { authState, isLoading } = useAuth();
@@ -35,9 +35,17 @@ const Dashboard = () => {
         <h1>Dashboard</h1>
         <p className="user-title">{userTitle}</p>
       </header>
-      <div className="avatar-section">
-        <AvatarManagement />
-      </div>
+      <section className="TOP-SECTION_DASHBOARD">
+        <div className="avatar-section">
+          <AvatarManagement />
+        </div>
+        <div className="INFO-SECTION">
+          <p>{authState.user.name}</p>
+          <p>
+            {authState.user.email}
+          </p>
+        </div>
+      </section>
       <div className="bookings-section">
         {authState.isVenueManager ? <VenueManagement /> : <CustomerBookings />}
       </div>

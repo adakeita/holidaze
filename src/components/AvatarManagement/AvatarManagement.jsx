@@ -2,6 +2,7 @@ import { useState } from "react";
 import { updateUserProfile } from "../../services/profileService";
 import { useAuth } from "../../contexts/AuthContext";
 import "../../styles/dashboard.css";
+import "./avatar.css";
 
 const AvatarManagement = () => {
   const { authState, updateUserInfo } = useAuth();
@@ -26,19 +27,32 @@ const AvatarManagement = () => {
 
   return (
     <div className="avatar-container">
-      <img
-        src={authState.user.avatar?.url || "default-avatar-url.jpg"}
-        alt={authState.user.name}
-      />
-      <div>
-        <h3>Update Your Avatar</h3>
-        <input
-          type="url"
-          value={avatarUrl}
-          onChange={(e) => setAvatarUrl(e.target.value)}
-          placeholder="Enter avatar URL"
+      <div className="avatar-img-wrapper">
+        <img
+          className="avatar-image"
+          src={authState.user.avatar?.url || "default-avatar-url.jpg"}
+          alt={authState.user.name}
         />
-        <button onClick={handleUpdateAvatar}>Update Avatar</button>
+      </div>
+      <div className="input-section_avatar">
+        <div className="input-wrapper_avatar">
+          <label htmlFor="avatar" className="avatar-label">
+            Avatar URL
+          </label>
+          <input
+            id="avatar"
+            type="url"
+            className="avatar-input"
+            value={avatarUrl}
+            onChange={(e) => setAvatarUrl(e.target.value)}
+            placeholder="Enter avatar URL"
+          />
+        </div>
+        <div className="avatar-btn-wrapper">
+          <button className="avatar-btn" onClick={handleUpdateAvatar}>
+            Update Avatar
+          </button>
+        </div>
       </div>
     </div>
   );
