@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import CustomerBookingForm from "../CustomerBookingForm/CustomerBookingForm";
 import { useAuth } from "../../contexts/AuthContext";
+import { Link } from "react-router-dom";
 import "./singlevenuecard.css";
 
 const SingleVenueCard = ({ venue }) => {
@@ -34,45 +35,58 @@ const SingleVenueCard = ({ venue }) => {
         </div>
       </div>
       <section className="BOTTOM-SECTION_SINGLEVENUE">
-        <div className="venue-details">
-          <h1 className="venue-name">{venue.name}</h1>
-          <div className="venue-rating">
-            <span>{venue.rating}/5</span>
-            <span className="stars">★★★☆☆</span>
+        <div className="HEADER-WRAPPER_SINGLEVENUE">
+          <h2 className="VENUE-NAME_SINGLEVENUE">{venue.name}</h2>
+          <div className="VENUE-RATING_SINGLEVENUE">
+            <span className="RATING_SINGLEVENUE">{venue.rating}/5</span>
+            <span className="STARS_SINGLEVENUE">★★★☆☆</span>
           </div>
-          <div className="VENUEINFORMATION_BOTTOM-SECTION">
-            <div className="venue-location">
-              <h3>Location</h3>
-              <p>
+        </div>
+        <div className="INFO-BOOKING-WRAPPER_SINGLEVENUE">
+          <div className="VENUEINFO_BOTTOM-SECTION">
+            <div className="VENUE-LOCATION_SINGLEVENUE">
+              <h4 className="VENUE-INFO-HEADER">Location</h4>
+              <p className="VENUE-LOCATION-TEXT_SINGLEVENUE">
                 {venue.location.address}, {venue.location.city},{" "}
                 {venue.location.country}
               </p>
             </div>
-            <div className="venue-description">
-              <h3>Description</h3>
+            <div className="VENUE-DESC_SINGLEVENUE">
+              <h4 className="VENUE-INFO-HEADER">Description</h4>
               <p>{venue.description}</p>
             </div>
-            <div className="venue-price">
-              <h3>${venue.price} per night</h3>
+            <div className="VENUE-PRICE_SINGLVENUE">
+              <h4 className="VENUE-INFO-HEADER">${venue.price} per night</h4>
               <p>Max guests: {venue.maxGuests}</p>
             </div>
-            <div className="venue-ammeneties">
-              <h3>Ammeneties</h3>
-              <ul>
-                {venue.meta.wifi && <li>Wifi</li>}
-                {venue.meta.parking && <li>Parking</li>}
-                {venue.meta.breakfast && <li>Breakfast</li>}
-                {venue.meta.pets && <li>Pets allowed</li>}
-              </ul>
-            </div>
           </div>
-          <div className="booking-section">
+          <div className="VENUE-EXTRAS_SINGLEVENUE">
+            <h4 className="VENUE-INFO-HEADER">Ammeneties</h4>
+            <ul>
+              {venue.meta.wifi && <li>Wifi</li>}
+              {venue.meta.parking && <li>Parking</li>}
+              {venue.meta.breakfast && <li>Breakfast</li>}
+              {venue.meta.pets && <li>Pets allowed</li>}
+            </ul>
+          </div>
+          <div className="BOOKING-SECTION_SINGLEVENUE">
             {authState.isAuthenticated ? (
               <CustomerBookingForm venue={venue} />
             ) : (
-              <p className="error-msg_venuedetails">
-                Log in to book this venue.
-              </p>
+              <div className="LOGIN-SIGNUP-WRAPPER">
+                <p className="LOGIN-MSG_SINGLEVENUE">
+                  Log in to book this venue.
+                </p>
+                <div className="LOGIN_SINGLEVENUE">
+                  <Link
+                    role="button"
+                    to="/login"
+                    className="LOGIN-BTN_SINGLEVENUE"
+                  >
+                    Login
+                  </Link>
+                </div>
+              </div>
             )}
           </div>
         </div>

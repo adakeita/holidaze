@@ -1,0 +1,16 @@
+.booking-form-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.calendar-container {
+    margin-bottom: 20px;
+}
+
+.guests-input {
+    margin-bottom: 20px;
+}
+
+button {
+    margin-top: 20px;
+}

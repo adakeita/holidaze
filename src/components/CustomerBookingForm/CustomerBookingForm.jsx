@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { createBooking } from "../../services/bookingService";
 import { useAuth } from "../../contexts/AuthContext";
+import "./customerbookingform.css";
 
 const CustomerBookingForm = ({ venue }) => {
   const [startDate, setStartDate] = useState(null);
@@ -64,7 +65,7 @@ const CustomerBookingForm = ({ venue }) => {
 
   return (
     <div className="booking-form-container">
-      <h2 className="text-xl font-semibold text-gray-800">Available dates</h2>
+      <h4 className="text-xl font-semibold text-gray-800">Available dates</h4>
       <div className="calendar-container">
         <DatePicker
           selected={startDate}
