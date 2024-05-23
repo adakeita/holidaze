@@ -169,4 +169,8 @@ FOOTER {
     .SOCIAL-MEDIA-LINK_FOOTER img {
         width: 50px;
     }
+
+    .BOTTOM_FOOTER {
+        margin-top: 0;
+    }
 }
