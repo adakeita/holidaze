@@ -1,0 +1,12 @@
+.floating-btn {
+    position: fixed;
+    bottom: 100px;
+    right: 50px;
+    z-index: 1000;
+}
+.create-btn {
+    background: orange;
+    border-radius: 50px;
+    width: 100px;
+    height: 100px;
+}

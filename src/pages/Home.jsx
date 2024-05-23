@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { fetchLatestUniqueVenues } from "../services/venueService";
+import { useAuth } from "../contexts/AuthContext";
+import CreateVenueForm from "../components/CreateVenueForm/CreateVenueForm";
+import FloatingBtn from "../components/FloatingBtn/FloatingBtn";
+import Modal from "../components/Modal/Modal";
 import Mainimg from "../assets/img/home-img.png";
 import View from "../assets/img/view.png";
 import Register from "../assets/svg/signup.svg";
@@ -16,6 +20,8 @@ import "../styles/homestyles.css";
 function Home() {
   const navigate = useNavigate();
   const [latestUniqueVenues, setLatestUniqueVenues] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { authState } = useAuth();
 
   useEffect(() => {
     const loadLatestUniqueVenues = async () => {
@@ -30,9 +36,16 @@ function Home() {
     loadLatestUniqueVenues();
   }, []);
 
-
   const handleNavigate = () => {
     navigate("/venues");
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -187,6 +200,14 @@ function Home() {
             </div>
           </div>
         </section>
+        {authState.isVenueManager && <FloatingBtn onClick={openModal} />}
+        <Modal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          title="Create a New Venue"
+        >
+          <CreateVenueForm onClose={closeModal} />
+        </Modal>
       </div>
     </div>
   );

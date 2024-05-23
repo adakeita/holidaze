@@ -40,6 +40,10 @@ const Dashboard = () => {
           <AvatarManagement />
         </div>
         <div className="INFO-SECTION">
+          <h2 className="HEADER-INFO_DASHBOARD">Profile Information</h2>
+          <div className="ROLE-WRAPPER_DASHBOARD">
+          <p>{authState.isVenueManager ? 'Logged in as venuemanager' : 'Logged in as customer'}</p>
+          </div>
           <p>{authState.user.name}</p>
           <p>
             {authState.user.email}

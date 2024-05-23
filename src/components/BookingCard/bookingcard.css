@@ -1,0 +1,132 @@
+.CONTAINER_BOOKINGCARD {
+    background: white;
+    color: #333;
+    width: 100%;
+    max-width: 350px;
+    margin: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.CONTAINER_BOOKINGCARD:hover {
+    transform: translateY(-5px);
+}
+
+.IMG_WRAPPER_BOOKINGCARD {
+    height: 200px;
+    overflow: hidden;
+}
+
+.IMG_BOOKINGCARD {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.CONTAINER_BOOKINGCARD:hover .IMG_BOOKINGCARD {
+    transform: scale(1.05);
+}
+
+.DETAILS_BOOKINGCARD {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.HEADER_WRAPPER_BOOKINGCARD {
+    margin-bottom: 1rem;
+}
+
+.HEADER_BOOKINGCARD {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.DATES_BOOKINGCARD {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #555;
+    margin: 0.25rem 0;
+}
+
+.VENUE_DESC_WRAPPER_BOOKINGCARD {
+    margin-bottom: 1rem;
+}
+
+.VENUE_DESC_BOOKINGCARD {
+    font-size: 1rem;
+    color: #666;
+    height: 3rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.VENUE_LOCATION_WRAPPER_BOOKINGCARD {
+    margin-bottom: 1rem;
+}
+
+.VENUE_LOCATION_BOOKINGCARD {
+    font-size: 1rem;
+    color: #777;
+}
+
+.VENUE_PRICE_WRAPPER_BOOKINGCARD {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.VENUE_PRICE_BOOKINGCARD {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.EXTRAS_WRAPPER_BOOKINGCARD {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.EXTRAS_BOOKINGCARD {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.BADGE {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background:  #ffc469;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.VIEWMORE_BTN_WRAPPER {
+    display: flex;
+    justify-content: center;
+}
+
+.VIEWMORE_BTN_BOOKINGCARD {
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1.25rem;
+    text-decoration: underline;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.VIEWMORE_BTN_BOOKINGCARD:hover {
+    scale: 1.05;
+    rotate: -3deg;
+}

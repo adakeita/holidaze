@@ -55,8 +55,12 @@ const SingleVenueCard = ({ venue }) => {
               <h4 className="VENUE-INFO-HEADER">Description</h4>
               <p>{venue.description}</p>
             </div>
-            <div className="VENUE-PRICE_SINGLVENUE">
-              <h4 className="VENUE-INFO-HEADER">${venue.price} per night</h4>
+            <div className="VENUE-PRICE_SINGLEVENUE">
+              <h4 className="VENUE-INFO-HEADER">Price</h4>
+                <p>${venue.price}/night</p>
+            </div>
+            <div className="VENUE-MAX_SINGLEVENUE">
+              <h4 className="VENUE-INFO-HEADER">Max Guests</h4>
               <p>Max guests: {venue.maxGuests}</p>
             </div>
           </div>

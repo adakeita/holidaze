@@ -2,8 +2,12 @@ import { useEffect, useState } from "react";
 import VenueCard from "../components/VenueCard/VenueCard";
 import VenueCarousel from "../components/VenueCarousel/VenueCarousel";
 import Filters from "../components/Filters/Filters";
+import FloatingBtn from "../components/FloatingBtn/FloatingBtn";
 import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner";
+import Modal from "../components/Modal/Modal";
+import CreateVenueForm from "../components/CreateVenueForm/CreateVenueForm";
 import { fetchVenues } from "../services/venueService";
+import { useAuth } from "../contexts/AuthContext";
 import "../styles/venuestyles.css";
 
 const VenuesPage = () => {
@@ -11,6 +15,9 @@ const VenuesPage = () => {
   const [loading, setLoading] = useState(true);
   const [sort, setSort] = useState({ field: "created", order: "desc" });
   const [currentPage, setCurrentPage] = useState(1);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const { authState } = useAuth();
 
   const loadVenues = async (
     page = 1,
@@ -55,6 +62,15 @@ const VenuesPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
   };
 
+  const openModal = () => {
+    console.log("Opening modal");
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    console.log("Closing modal");
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="VENUES-PAGE">
@@ -79,6 +95,14 @@ const VenuesPage = () => {
             </button>
           </div>
         )}
+        {authState.isVenueManager && <FloatingBtn onClick={openModal} />}
+        <Modal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          title="Create a New Venue"
+        >
+          <CreateVenueForm onClose={closeModal} />
+        </Modal>
       </section>
     </div>
   );
