@@ -156,7 +156,7 @@ polaroid
 .HERO-WRAPPER_HOME {
     position: relative;
     width: 100%;
-    margin-bottom: 5em; /* Increased margin */
+    margin-bottom: 5em;
 }
 
 .HERO-IMG {

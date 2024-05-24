@@ -65,7 +65,7 @@ const SingleVenueCard = ({ venue }) => {
             </div>
           </div>
           <div className="VENUE-EXTRAS_SINGLEVENUE">
-            <h4 className="VENUE-INFO-HEADER">Ammeneties</h4>
+            <h4 className="VENUE-INFO-HEADER">Amenities</h4>
             <ul>
               {venue.meta.wifi && <li>Wifi</li>}
               {venue.meta.parking && <li>Parking</li>}

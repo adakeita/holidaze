@@ -144,7 +144,7 @@ function Home() {
           </div>
           {/* Animated Slideshow Button */}
           <div className="VIEW-VENUES-BUTTON-WRAPPER">
-            <button className="VIEW-VENUES-BUTTON" onClick={handleNavigate}>
+            <Link to="/venues" className="VIEW-VENUES-BUTTON">
               {latestUniqueVenues &&
                 latestUniqueVenues.map((venue, index) => (
                   <img
@@ -160,7 +160,7 @@ function Home() {
                   />
                 ))}
               <div className="VIEW-VENUES-TEXT">Go to venues</div>
-            </button>
+            </Link>
           </div>
         </section>
         <section className="VENUE-SECTION-WRAPPER">

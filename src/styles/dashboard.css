@@ -1,7 +1,8 @@
 .dashboard-container {
+    width: 90%;
     max-width: 1000px;
     margin: 0 auto;
-    padding: 1em 3em;
+    padding: 1em 0;
     font-family: "League Spartan", sans-serif;
 }
 
@@ -70,7 +71,12 @@
     margin-top: 2rem;
 }
 
+.OVERVIEW-CONTAINER_BOOKING {
+    width: 100%;
+}
+
 .bookings-section {
+    margin: 2rem 0;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -78,8 +84,20 @@
 
 .BOOKING-CONTAINER {
     width: 100%;
-    padding: 1rem 0;
+    padding: 1rem 0 2.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.OVERVIEW_HEADER {
+    color: #333;
+    font-size: 1.9rem;
+}
+
+@media screen and (max-width: 768px) {
+    .OVERVIEW-CONTAINER_BOOKING {
+        width: 90%;
+        margin: 0 auto;
+    }
 }

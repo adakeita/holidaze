@@ -82,7 +82,7 @@ const VenuesPage = () => {
         <Filters onSortChange={handleSortChange} />
       </div>
       <section className="PAGE-CONTAINER">
-        <div className="VENUES-CONTAINER tw-venues-grid tw-grid tw-grid-cols-1 tw-gap-9 tw-gap-row-12 md:tw-grid-cols-2 sm:tw-gap-9 lg:tw-gap-8 lg:tw-grid-cols-3">
+        <div className="VENUES-CONTAINER tw-venues-grid tw-grid tw-grid-cols-1 tw-gap-9 tw-gap-row-9 md:tw-grid-cols-2 sm:tw-gap-row-2  sm:tw-gap-4 lg:tw-gap-4 lg:tw-grid-cols-3">
           {loading && <LoadingSpinner />}
           {venues.map((venue) => (
             <VenueCard key={venue.id} venue={venue} />

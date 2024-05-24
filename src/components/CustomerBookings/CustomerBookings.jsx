@@ -53,9 +53,9 @@ const CustomerBookingOverview = () => {
   }, [authState]);
 
   return (
-    <section className="booking-overview">
-      <h2>Your Upcoming Bookings</h2>
-      <div className="BOOKING-CONTAINER">
+    <section className="OVERVIEW-CONTAINER_BOOKING">
+      <h3 className="OVERVIEW_HEADER">Your Upcoming Bookings</h3>
+      <div className="BOOKING-CONTAINER tw-venues-grid tw-grid tw-grid-cols-1 tw-gap-9 tw-gap-row-9 md:tw-grid-cols-2 sm:tw-gap-row-2 sm:tw-gap-8 lg:tw-gap-6 lg:tw-grid-cols-3">
         {upcomingBookings.length > 0 ? (
           upcomingBookings.map((booking) => (
             <BookingCard key={booking.id} booking={booking} />
@@ -64,8 +64,8 @@ const CustomerBookingOverview = () => {
           <p>No upcoming bookings found.</p>
         )}
       </div>
-      <h2>Previous Stays</h2>
-      <div className="BOOKING-CONTAINER">
+      <h3 className="OVERVIEW_HEADER">Previous Stays</h3>
+      <div className="BOOKING-CONTAINER tw-venues-grid tw-grid tw-grid-cols-1 tw-gap-9 tw-gap-row-9 md:tw-grid-cols-2 sm:tw-gap-row-2 sm:tw-gap-8 lg:tw-gap-6 lg:tw-grid-cols-3">
         {previousBookings.length > 0 ? (
           previousBookings.map((booking) => (
             <BookingCard key={booking.id} booking={booking} />

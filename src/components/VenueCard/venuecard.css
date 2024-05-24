@@ -1,86 +1,113 @@
 .CONTAINER_VENUECARD {
-  width: 95%;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
+  overflow: hidden;
+  transition: transform 0.3s;
+  padding: 0.5rem;
   border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  width: 90%;
+  height: 525px;
+  margin: 0 auto;
 }
 
 .CONTAINER_VENUECARD:hover {
+  transform: scale(1.05);
   box-shadow: 2px 2px 16px #726b659e;
 }
 
-.CONTAINER_VENUECARD:hover .IMG-WRAPPER_VENUECARD {
-  box-shadow: none;
-}
-
-.IMG-WRAPPER_VENUECARD {
-  height: 55%;
+.IMG_WRAPPER_VENUECARD {
+  width: 100%;
+  height: 50%;
   box-shadow: 3px 3px 7px #726b65e0;
   border-radius: 12px;
+  overflow: hidden;
 }
 
 .IMG_VENUECARD {
-  height: 100%;
   width: 100%;
-  border-radius: 12px;
+  height: 100%;
   object-fit: cover;
 }
 
 .DETAILS_VENUECARD {
   width: 100%;
-  height: 45%;
+  height: 50%;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 0.25em;
+  padding: 0.5rem 0.25rem;
 }
 
-.HEADER-WRAPPER_VENUECARD {
-  height: 25%;
-  width: 100%;
+.HEADER_WRAPPER_VENUECARD {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
 }
 
 .HEADER_VENUECARD {
   font-family: "League Spartan", sans-serif;
-  font-size: 1.65rem;
+  font-size: 1.5rem;
   font-weight: 700;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
-.VENUE-DESC-WRAPPER_VENUECARD {
+.VENUE_DESC_WRAPPER_VENUECARD {
   position: relative;
   max-height: 100%;
   width: 100%;
   text-align: left;
 }
 
-.VENUE-DESC_VENUECARD {
+.VENUE_DESC_VENUECARD {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  font-size: 1rem;
+  color: #333;
 }
 
-.VENUE-PRICE-WRAPPER_VENUECARD {
-  width: 100%;
-  height: 20%;
-}
-
-.VENUE-PRICE_VENUECARD {
-  font-size: 1.45rem;
-}
-
-.EXTRAS-WRAPPER_VENUECARD {
-  width: 100%;
-  height: 15%;
-  font-size: 1.4rem;
+.VENUE_LOCATION_WRAPPER_VENUECARD {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.VENUE_LOCATION_VENUECARD {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.VENUE_PRICE_WRAPPER_VENUECARD {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.VENUE_PRICE_VENUECARD {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.EXTRAS_WRAPPER_VENUECARD {
+  margin: 0.5em 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.BADGE_VENUECARD {
+  background-color: #ffd065db;
+  color: #333;
+  border-radius: 6px;
+  padding: 0 0.6rem;
+  font-size: 0.8rem;
+  box-shadow: 2px 2px 5px #726b65e0;
 }

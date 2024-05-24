@@ -1,52 +1,60 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./venuecard.css";
 
 const VenueCard = ({ venue }) => {
-  const navigate = useNavigate();
   const imageUrl =
     venue.media[0]?.url ||
     "https://images.unsplash.com/photo-1592921870789-04563d55041c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80";
 
   return (
-    <div
-      className="CONTAINER_VENUECARD tw-flex tw-flex-col tw-overflow-hidden tw-cursor-pointer tw-transition-transform tw-duration-300 hover:tw-scale-105 tw-p-2"
-      onClick={() => navigate(`/venues/${venue.id}`)}
-      style={{ height: "500px" }}
+    <Link
+      to={`/venues/${venue.id}`}
+      className="CONTAINER_VENUECARD"
+      aria-label={`View details for ${venue.name}`}
     >
-      <figure className="IMG-WRAPPER_VENUECARD tw-w-full">
-        <img src={imageUrl} alt={venue.name} className="IMG_VENUECARD" />
+      <figure className="IMG_WRAPPER_VENUECARD">
+        <img
+          src={imageUrl}
+          aria-labelledby="cardheader"
+          className="IMG_VENUECARD"
+        />
       </figure>
-      <section className="DETAILS_VENUECARD tw-flex-col">
-        <div className="HEADER-WRAPPER_VENUECARD">
-          <h2 className="HEADER_VENUECARD tw-text-gray-800">{venue.name}</h2>
+      <section className="DETAILS_VENUECARD">
+        <div className="HEADER_WRAPPER_VENUECARD">
+          <h2 id="cardheader" className="HEADER_VENUECARD">
+            {venue.name}
+          </h2>
         </div>
-        <div className="VENUE-DESC-WRAPPER_VENUECARD tw-px-1">
-          <p className="VENUE-DESC_VENUECARD tw-text-gray-600 tw-flex-grow">
-            {venue.description}
+        <div className="VENUE_DESC_WRAPPER_VENUECARD">
+          <p className="VENUE_DESC_VENUECARD">
+            {venue.description || "No description provided"}
           </p>
         </div>
-        <div className="VENUE-PRICE-WRAPPER_VENUECARD tw-flex tw-justify-end">
-          <span className="VENUE-PRICE_VENUECARD tw-font-semibold tw-text-gray-900">
-            ${venue.price}/night
+        <div className="VENUE_LOCATION_WRAPPER_VENUECARD">
+          <span className="VENUE_LOCATION_VENUECARD">
+            {venue.location.city && venue.location.country
+              ? `${venue.location.city}, ${venue.location.country}`
+              : "No location provided"}
           </span>
         </div>
-        <div className="EXTRAS-WRAPPER_VENUECARD">
-          {venue.meta.wifi && (
-            <span className="tw-badge tw-badge-accent tw-mx-1">Wifi</span>
-          )}
+        <div className="VENUE_PRICE_WRAPPER_VENUECARD">
+          <span className="VENUE_PRICE_VENUECARD">    {venue.price ? `$${venue.price}/night` : "No price provided"}</span>
+        </div>
+        <div className="EXTRAS_WRAPPER_VENUECARD">
+          {venue.meta.wifi && <span className="BADGE_VENUECARD">Wifi</span>}
           {venue.meta.pets && (
-            <span className="tw-badge tw-badge-accent">Pets Allowed</span>
+            <span className="BADGE_VENUECARD">Pets Allowed</span>
           )}
           {venue.meta.breakfast && (
-            <span className="tw-badge tw-badge-accent tw-mx-1">Breakfast</span>
+            <span className="BADGE_VENUECARD">Breakfast</span>
           )}
           {venue.meta.parking && (
-            <span className="tw-badge tw-badge-accent  tw-mx-1">Parking</span>
+            <span className="BADGE_VENUECARD">Parking</span>
           )}
         </div>
       </section>
-    </div>
+    </Link>
   );
 };
 
