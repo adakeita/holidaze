@@ -54,7 +54,7 @@ export default {
     base: false, // applies background color and foreground color
     styled: true, // include daisyUI colors and design decisions (default)
     utils: true, // adds responsive and modifier utility classes
-    prefix: "du", // no prefix for daisyUI classnames
+    prefix: "", // no prefix for daisyUI classnames
     logs: true, // shows daisyUI logs in the terminal when building your CSS
     themeRoot: ":root", // the element that receives theme color CSS variables
   },
