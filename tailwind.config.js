@@ -1,4 +1,3 @@
-import { se } from "date-fns/locale";
 const plugin = require("tailwindcss/plugin");
 
 /** @type {import('tailwindcss').Config} */
@@ -50,4 +49,13 @@ export default {
       );
     }),
   ],
+  daisyui: {
+    themes: ["light"], // or specify themes you want to include
+    base: false, // applies background color and foreground color
+    styled: true, // include daisyUI colors and design decisions (default)
+    utils: true, // adds responsive and modifier utility classes
+    prefix: "du", // no prefix for daisyUI classnames
+    logs: true, // shows daisyUI logs in the terminal when building your CSS
+    themeRoot: ":root", // the element that receives theme color CSS variables
+  },
 };
