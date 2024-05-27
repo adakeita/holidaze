@@ -1,28 +1,33 @@
-import { useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import PropTypes from "prop-types";
+import Calendar from "react-calendar";
+import "../../styles/react-calendar.css"
 
-const BookingCalendar = ({ onDateChange, initialDate }) => {
-  const [startDate, setStartDate] = useState(initialDate || new Date());
-
-  const handleDateChange = (date) => {
-    setStartDate(date);
-    if (onDateChange) {
-      onDateChange(date);
-    }
+const BookingCalendar = ({ bookedDates }) => {
+  const isDateSelectable = (date) => {
+    return !bookedDates.some(
+      (range) => date >= range.start && date <= range.end
+    );
   };
 
   return (
-    <div className="booking-calendar">
-      <h3>Select a Date</h3>
-      <DatePicker
-        selected={startDate}
-        onChange={handleDateChange}
-        minDate={new Date()}
-        inline
+    <div className="BOOKING-CALENDAR_WRAPPER">
+      <Calendar
+        tileDisabled={({ date }) => !isDateSelectable(date)}
+        tileClassName={({ date, view }) =>
+          !isDateSelectable(date) ? "booked" : null
+        }
       />
     </div>
   );
+};
+
+BookingCalendar.propTypes = {
+  bookedDates: PropTypes.arrayOf(
+    PropTypes.shape({
+      start: PropTypes.instanceOf(Date).isRequired,
+      end: PropTypes.instanceOf(Date).isRequired,
+    })
+  ).isRequired,
 };
 
 export default BookingCalendar;

@@ -39,11 +39,6 @@ const Footer = () => {
                   Venues
                 </Link>
               </li>
-              <li className="LINKS-LIST-ITEM_FOOTER">
-                <Link to="/contact" className="LINK_FOOTER">
-                  Contact
-                </Link>
-              </li>
             </ul>
           </section>
         </div>

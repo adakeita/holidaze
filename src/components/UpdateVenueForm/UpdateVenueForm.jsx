@@ -1,31 +1,29 @@
 import React, { useState } from "react";
-import { createVenue } from "../../services/venueService";
-import { useAuth } from "../../contexts/AuthContext";
 import PropTypes from "prop-types";
-import "./createvenueform.css";
+import "./updatevenueform.css";
 
-const CreateVenueForm = ({ onClose }) => {
-  const { authState } = useAuth();
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [country, setCountry] = useState("");
-  const [price, setPrice] = useState("");
-  const [maxGuests, setMaxGuests] = useState("");
-  const [rating, setRating] = useState("");
-  const [wifi, setWifi] = useState(false);
-  const [parking, setParking] = useState(false);
-  const [breakfast, setBreakfast] = useState(false);
-  const [pets, setPets] = useState(false);
-  const [image, setImage] = useState("");
+const UpdateVenueForm = ({ venue, onSave, onCancel }) => {
+  const [name, setName] = useState(venue.name);
+  const [description, setDescription] = useState(venue.description);
+  const [address, setAddress] = useState(venue.location.address || "");
+  const [city, setCity] = useState(venue.location.city || "");
+  const [country, setCountry] = useState(venue.location.country || "");
+  const [price, setPrice] = useState(venue.price);
+  const [maxGuests, setMaxGuests] = useState(venue.maxGuests);
+  const [rating, setRating] = useState(venue.rating);
+  const [wifi, setWifi] = useState(venue.meta.wifi);
+  const [parking, setParking] = useState(venue.meta.parking);
+  const [breakfast, setBreakfast] = useState(venue.meta.breakfast);
+  const [pets, setPets] = useState(venue.meta.pets);
+  const [image, setImage] = useState(venue.media[0]?.url || "");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const venueData = {
+    const updatedVenue = {
+      ...venue,
       name,
       description,
       location: {
@@ -51,25 +49,20 @@ const CreateVenueForm = ({ onClose }) => {
     };
 
     try {
-      const response = await createVenue(
-        venueData,
-        authState.accessToken,
-        authState.apiKey
-      );
-      setMessage("Venue created successfully!");
-      console.log("Venue created:", response);
+      await onSave(updatedVenue);
+      setMessage("Venue updated successfully!");
       setLoading(false);
-      onClose();
+      onCancel(); // Close modal
     } catch (error) {
-      console.error("Failed to create venue:", error.message);
-      setMessage(`Failed to create venue: ${error.message}`);
+      console.error("Failed to update venue:", error.message);
+      setMessage(`Failed to update venue: ${error.message}`);
       setLoading(false);
     }
   };
 
   return (
-    <form className="create-venue-form" onSubmit={handleSubmit}>
-      <h2>Create a New Venue</h2>
+    <form className="update-venue-form" onSubmit={handleSubmit}>
+      <h2>Update Venue</h2>
       <label>
         Name:
         <input
@@ -186,15 +179,17 @@ const CreateVenueForm = ({ onClose }) => {
         </label>
       </div>
       <button type="submit" disabled={loading}>
-        {loading ? "Creating..." : "Create Venue"}
+        {loading ? "Updating..." : "Update Venue"}
       </button>
       {message && <p>{message}</p>}
     </form>
   );
 };
 
-CreateVenueForm.propTypes = {
-  onClose: PropTypes.func.isRequired,
+UpdateVenueForm.propTypes = {
+  venue: PropTypes.object.isRequired,
+  onSave: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
 };
 
-export default CreateVenueForm;
+export default UpdateVenueForm;

@@ -73,7 +73,7 @@
     height: 3rem;
     display: -webkit-box;
     overflow: hidden;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
 }
@@ -132,13 +132,13 @@
     border: none;
     cursor: pointer;
     font-size: 1.25rem;
-    text-decoration: underline;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
 }
 
 .VIEWMORE_BTN_BOOKINGCARD:hover {
     transform: scale(1.05) rotate(-3deg);
+    text-decoration: underline;
 }
 
 /* Media Queries */

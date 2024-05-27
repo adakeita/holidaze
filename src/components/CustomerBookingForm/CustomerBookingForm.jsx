@@ -1,36 +1,16 @@
-import { useState, useEffect } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { createBooking } from "../../services/bookingService";
 import { useAuth } from "../../contexts/AuthContext";
 import "./customerbookingform.css";
 
-const CustomerBookingForm = ({ venue }) => {
+const CustomerBookingForm = ({ venue, onClose }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [guests, setGuests] = useState(1);
   const { authState } = useAuth();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const [bookedDates, setBookedDates] = useState([]);
-
-  useEffect(() => {
-    if (venue.bookings) {
-      const bookedRanges = venue.bookings.map((booking) => {
-        return {
-          start: new Date(booking.dateFrom),
-          end: new Date(booking.dateTo),
-        };
-      });
-      setBookedDates(bookedRanges);
-    }
-  }, [venue.bookings]);
-
-  const isDateSelectable = (date) => {
-    return !bookedDates.some(
-      (range) => date >= range.start && date <= range.end
-    );
-  };
 
   const handleBooking = async () => {
     if (!startDate || !endDate) {
@@ -45,42 +25,25 @@ const CustomerBookingForm = ({ venue }) => {
       venueId: venue.id,
     };
 
-    console.log("Sending booking data:", bookingData);
-
     try {
       const response = await createBooking(
         bookingData,
         authState.accessToken,
         authState.apiKey
       );
-      console.log("Booking response:", response);
       setMessage("Booking successful!");
+      setLoading(false);
+      onClose();
     } catch (error) {
       console.error("Booking error:", error);
       setMessage(`Failed to create booking: ${error.message}`);
-    } finally {
       setLoading(false);
     }
   };
 
   return (
     <div className="booking-form-container">
-      <h4 className="text-xl font-semibold text-gray-800">Available dates</h4>
-      <div className="calendar-container">
-        <DatePicker
-          selected={startDate}
-          onChange={(dates) => {
-            const [start, end] = dates;
-            setStartDate(start);
-            setEndDate(end);
-          }}
-          startDate={startDate}
-          endDate={endDate}
-          selectsRange
-          filterDate={isDateSelectable}
-          inline
-        />
-      </div>
+      <h4 className="text-xl font-semibold text-gray-800">Book this venue</h4>
       <div className="guests-input mt-4">
         <label
           htmlFor="guests"
@@ -109,6 +72,11 @@ const CustomerBookingForm = ({ venue }) => {
       {message && <p className="text-center text-sm text-red-500">{message}</p>}
     </div>
   );
+};
+
+CustomerBookingForm.propTypes = {
+  venue: PropTypes.object.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default CustomerBookingForm;

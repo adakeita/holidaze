@@ -13,21 +13,20 @@ const Header = ({ onSearchChange }) => {
   };
 
   return (
-    <header className="HEADER-CONTAINER tw-py-4">
+    <header className="HEADER-CONTAINER">
       <div className="HEADER-CONTENT">
         <div className="MOBILE-MENU-WRAPPER">
-          <div className="LOGO-WRAPPER  sm:tw-w-full md:tw-w-2/1">
+          <div className="LOGO-WRAPPER">
             <Link to="/" className="LOGO-LINK">
               <img src={Logo} alt="Logo-link" />
             </Link>
           </div>
-          {/* Hamburger Button */}
           <button
-            className="HAMBURGER-BTN sm:tw-hidden"
+            className="HAMBURGER-BTN"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <svg
-              className="HAMBURGER-ICON tw-h-9 tw-w-9 tw-items-center"
+              className="HAMBURGER-ICON"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -42,12 +41,7 @@ const Header = ({ onSearchChange }) => {
           </button>
         </div>
 
-        {/* Screen size >= 640px && isMenuOpen*/}
-        <div
-          className={`MENU-CONTENT-WRAPPER sm:tw-py-0 ${
-            isMenuOpen ? "tw-flex" : "tw-hidden sm:tw-flex"
-          }`}
-        >
+        <div className={`MENU-CONTENT-WRAPPER ${isMenuOpen ? "OPEN" : ""}`}>
           <section className="SEARCH-WRAPPER">
             <input
               type="search"
@@ -55,37 +49,27 @@ const Header = ({ onSearchChange }) => {
               id="search"
               placeholder="Search for venues..."
               onChange={(e) => onSearchChange(e.target.value)}
-              className="SEARCHBAR focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-logo-green focus:tw-border-transparent hover:tw-scale-105"
+              className="SEARCHBAR"
             />
           </section>
-          {/* Navigation Links */}
           <nav className="NAVLINKS-WRAPPER">
-            <Link
-              to="/venues"
-              className="NAVLINK_NAVIGATION "
-            >
+            <Link to="/venues" className="NAVLINK_NAVIGATION">
               Venues
             </Link>
             {authState.isAuthenticated && (
               <>
-                <Link
-                  to="/dashboard"
-                  className="NAVLINK_NAVIGATION "
-                >
+                <Link to="/dashboard" className="NAVLINK_NAVIGATION">
                   Dashboard
                 </Link>
               </>
             )}
-            <Link
-              to="/contact"
-              className="NAVLINK_NAVIGATION "
-            >
+            <Link to="/contact" className="NAVLINK_NAVIGATION">
               Contact
             </Link>
           </nav>
           {authState.isAuthenticated && (
-            <div className="logout-wrapper">
-              <button onClick={handleLogout} className="logout-btn">
+            <div className="LOGOUT-WRAPPER">
+              <button onClick={handleLogout} className="LOGOUT-BTN">
                 Logout
               </button>
             </div>
@@ -94,18 +78,12 @@ const Header = ({ onSearchChange }) => {
             {!authState.isAuthenticated && (
               <>
                 <div className="LOGIN">
-                  <Link
-                    to="/login"
-                    className="LOGIN-BTN w-1/3 p-2 rounded-md bg-white text-center ml-2 shadow-header transition-all ease-in-out text-logo-green-hover hover:scale-105 hover:border-logo-green hover:border-2 sm:mx-0 sm:w-1/4 sm:mb-0"
-                  >
+                  <Link to="/login" className="LOGIN-BTN">
                     Login
                   </Link>
                 </div>
                 <div className="SIGNUP">
-                  <Link
-                    to="/register"
-                    className="REGISTER-BTN w-1/3 p-2 rounded-md bg-white text-center ml-2 shadow-header transition-all ease-in-out text-logo-green-hover hover:scale-105 hover:border-logo-green hover:border-2 sm:mx-0 sm:w-1/4 sm:mb-0"
-                  >
+                  <Link to="/register" className="REGISTER-BTN">
                     Register
                   </Link>
                 </div>

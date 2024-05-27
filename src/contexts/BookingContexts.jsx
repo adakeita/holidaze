@@ -22,11 +22,26 @@ export const BookingProvider = ({ children }) => {
   };
 
 
+  const fetchBookingsByProfile = async (profileName) => {
+    try {
+      const response = await BookingService.fetchBookingsByProfile(
+        profileName,
+        accessToken,
+        apiKey
+      );
+      setBookings(response.data);
+    } catch (error) {
+      console.error("Fetching bookings failed:", error.message);
+    }
+  };
+
+
   return (
     <BookingContext.Provider
       value={{
         bookings,
         fetchBookingsForUser,
+        fetchBookingsByProfile,
         createBooking: BookingService.createBooking,
       }}
     >

@@ -1,8 +1,22 @@
+import { useEffect } from "react";
 import PropTypes from "prop-types";
 import "./modal.css";
 
 const Modal = ({ isOpen, onClose, title, children }) => {
+ 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+    return () => {
+      document.body.classList.remove("no-scroll");
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
+
 
   return (
     <div className="modal-overlay">

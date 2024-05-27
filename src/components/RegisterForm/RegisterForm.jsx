@@ -15,19 +15,20 @@ const RegisterForm = () => {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    const { name, value, checked } = e.target;
+    const { name, value, checked, type } = e.target;
     setFormData({
       ...formData,
-      [name]: name === "venueManager" ? checked : value,
+      [name]: type === "checkbox" ? checked : value,
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); // Clear previous error message
+    setError("");
     try {
-      await register(formData); // Use the register function from AuthContext
-      navigate("/"); // Navigate to the home page or another protected route after successful registration
+      console.log("Submitting registration form with data:", formData); // Debugging statement
+      await register(formData); // Use the register from AuthContext
+      navigate("/dashboard"); // Navigate to the home
     } catch (error) {
       console.error("Registration failed:", error.message);
       if (error.message.includes("Profile already exists")) {
@@ -40,7 +41,7 @@ const RegisterForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {error && <p style={{ color: "red" }}>{error}</p>}{" "}
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <label>
         Name:
         <input

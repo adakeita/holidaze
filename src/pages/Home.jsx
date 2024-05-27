@@ -142,7 +142,7 @@ function Home() {
               venue for your next holiday.
             </p>
           </div>
-          {/* Animated Slideshow Button */}
+          {/* Animated Btn */}
           <div className="VIEW-VENUES-BUTTON-WRAPPER">
             <Link to="/venues" className="VIEW-VENUES-BUTTON">
               {latestUniqueVenues &&
@@ -153,7 +153,7 @@ function Home() {
                       venue.media && venue.media.length > 0
                         ? venue.media[0].url
                         : "fallback-image-url"
-                    } // Use fallback if no image
+                    } // !img = fallback
                     alt={venue.name}
                     className="VIEW-VENUES-IMAGE"
                     style={{ animationDelay: `${index * 4}s` }}

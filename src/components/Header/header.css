@@ -1,3 +1,11 @@
+/* General Styling */
+.HEADER-CONTAINER {
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+}
+
 .HEADER-CONTENT {
     width: 95%;
     margin: 0 auto;
@@ -11,6 +19,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .LOGO-WRAPPER {
@@ -24,94 +33,188 @@
     justify-content: center;
     align-items: center;
     width: 75px;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
+.HAMBURGER-ICON {
+    height: 36px;
+    width: 36px;
+    color: #333;
+}
+
+/* Menu Content Wrapper */
 .MENU-CONTENT-WRAPPER {
     width: 100%;
+    max-height: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    padding: 0;
+    overflow: hidden;
+    transition:
+        max-height 0.4s ease-in-out,
+        padding 0.3s ease-in-out;
+}
+
+.MENU-CONTENT-WRAPPER.OPEN {
+    max-height: 300px;
     padding: 0.5em 0;
-    margin: 2em 0;
 }
 
 .SEARCH-WRAPPER {
-    width: 95%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1em 0;
-    transition: all 0.3s ease-in-out;
+    width: 90%;
+    margin: 0.5rem 0;
 }
 
 .SEARCHBAR {
-    display: flex;
     width: 100%;
-    height: 100%;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
     background: white;
-    border-radius: 12px;
-    padding: 0.5em;
-    box-shadow: inset 1px 2px 4px #726d69e8;
     font-style: italic;
-    transition: all 0.3s ease-in-out;
+    box-shadow: inset 1px 2px 3px rgba(0, 0, 0, 0.1);
 }
 
 .NAVLINKS-WRAPPER {
-    width: 95%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .NAVLINK_NAVIGATION {
     font-size: 1.2rem;
-    text-decoration: underline;
+    margin: 0.5rem 0;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
 }
 
+.NAVLINK_NAVIGATION:hover {
+    text-decoration: underline;
+    scale: 1.1;
+    rotate: -2deg;
+}
+
+.LOGOUT-WRAPPER {
+    margin: 1rem 0;
+}
+
+.LOGOUT-BTN {
+    padding: 0.25rem 1rem;
+    border: none;
+    background-color: #f44336;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.LOGOUT-BTN:hover {
+    background-color: #d32f2f;
+}
+
+.LOGIN-SIGNUP-WRAPPER {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.LOGIN-BTN,
+.REGISTER-BTN {
+    width: 80px;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: 1px solid #333;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    background-color: #fff;
+}
+
+.LOGIN-BTN:hover,
+.REGISTER-BTN:hover {
+    background-color: #f0f0f0;
+}
+
+/* Media Queries */
 @media screen and (min-width: 640px) {
     .HEADER-CONTENT {
-        width: 95%;
-        max-width: 1450px;
         flex-direction: row;
-        align-items: center;
+        justify-content: space-between;
+        margin: 0.5rem auto;
     }
 
     .MOBILE-MENU-WRAPPER {
-        width: 10%;
+        width: auto;
+    }
+
+    .LOGO-WRAPPER {
+        width: 100%;
+        max-width: 115px;
+    }
+
+    .HAMBURGER-BTN {
+        display: none;
     }
 
     .MENU-CONTENT-WRAPPER {
-        width: 90%;
-        margin: 0 auto;
+        display: flex;
         flex-direction: row;
-        justify-content: space-evenly;
-        align-items: end;
+        align-items: center;
+        justify-content: space-between;
+        width: 85%;
+        max-height: none;
+        padding: 0;
     }
 
     .SEARCH-WRAPPER {
-        display: flex;
         width: 30%;
-        padding: 0;
         margin: 0;
     }
 
     .SEARCHBAR {
-        justify-content: center;
-        background: white;
-        border-radius: 6px;
+        width: 100%;
     }
 
     .NAVLINKS-WRAPPER {
-        width: 40%;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-around;
+        width: 45%;
     }
-}
 
-@media screen and (min-width: 900px) {
-    .MENU-CONTENT-WRAPPER {
-        justify-content: space-between;
+    .NAVLINK_NAVIGATION {
+        margin: 0;
     }
+
+    .LOGOUT-WRAPPER {
+        margin: 0;
+        width: auto;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .LOGIN-SIGNUP-WRAPPER {
+        justify-content: space-between;
+        flex-direction: row;
+        width: 25%;
+    }
+
+    .LOGIN {
+        width: 45%;
+        display: flex;  
+    }
+
+    .LOGIN-BTN, .REGISTER-BTN {
+        margin: 0;
+        width: 100%;
+        display: block;
+        padding: 0.25rem 0.5rem;
+    }
+
 }

@@ -1,0 +1,187 @@
+.OWNED-VENUE-CARD {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  color: #333;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 3px 3px 10px rgb(0 0 0 / 35%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.OWNED-VENUE-CARD:hover {
+  transform: translateY(-5px);
+}
+
+.IMG_WRAPPER_OWNED-VENUECARD {
+  height: 225px;
+  overflow: hidden;
+}
+
+.IMG_OWNED-VENUECARD {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.DETAILS_OWNED-VENUECARD {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.HEADER_WRAPPER_OWNED-VENUECARD {
+  margin-bottom: 1rem;
+}
+
+.HEADER_OWNED-VENUECARD {
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.VENUE_DESC_OWNED-VENUECARD {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.VENUE_LOCATION_OWNED-VENUECARD,
+.VENUE_PRICE_OWNED-VENUECARD {
+  font-size: 1rem;
+  color: #777;
+}
+
+.EXTRAS_OWNED-VENUES {
+  width: 100%;
+  margin: 1.5rem auto 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.BADGE_OWNED-VENUE {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background: #ffd065db;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #333;
+  box-shadow: inset 1px 1px 2px #9b7539a1;
+}
+
+.BUTTONS_WRAPPER_OWNED-VENUECARD {
+  margin: 1rem 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.UPDATE-DELETE {
+  width: 60%;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.UPDATE-BTN,
+.DELETE-BTN {
+  padding: 0.25rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 2px 2px 3px #2d2b2b82;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.UPDATE-BTN {
+  background-color: #2899b3;
+  color: #fff;
+}
+
+.DELETE-BTN {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.DELETE-BTN:hover {
+  background-color: #d32f2f;
+}
+
+.VIEW-CALENDAR-BTN {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.VIEW-CALENDAR-BTN:hover {
+  transform: scale(1.05) rotate(-3deg);
+  text-decoration: underline;
+}
+
+.react-calendar {
+  margin: 2em auto;
+}
+
+.react-calendar__navigation {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+
+@media (min-width: 770px) {
+  .OWNED-VENUE-CARD {
+    width: 95%;
+  }
+
+  .DEFAULT-CARD_OWNED-VENUE {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .IMG_WRAPPER_OWNED-VENUECARD {
+    height: 500px;
+    width: 100%;
+  }
+
+  .IMG-VENUEDETAILS_OWNED-VENUE {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .DETAILS_OWNED-VENUECARD {
+    padding: 0.5rem 1rem;
+  }
+
+  .HEADER_OWNED-VENUECARD {
+    font-size: 2rem;
+  }
+
+  .EXTRAS_OWNED-VENUES {
+    margin-bottom: 0;
+  }
+
+  .BADGE_OWNED-VENUE {
+    font-size: 0.65rem;
+  }
+
+  .BUTTONS_WRAPPER_OWNED-VENUECARD {
+    margin: 1rem 0 1em;
+  }
+
+  .CALENDAR_WRAPPER {
+    border-top: 2px solid black;
+  }
+}

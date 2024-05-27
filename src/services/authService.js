@@ -2,7 +2,10 @@ import { fetchAPI } from "./apiService";
 
 export const login = async (email, password) => {
   try {
-    const response = await fetchAPI("auth/login", "POST", { email, password });
+    const response = await fetchAPI("auth/login?_holidaze=true", "POST", {
+      email,
+      password,
+    });
     if (response.data.accessToken) {
       const apiKeyResponse = await createAPIKey(response.data.accessToken);
       return {
@@ -22,15 +25,15 @@ export const login = async (email, password) => {
 
 export const registerUser = async (userData) => {
   try {
-    console.log("Registering user with data:", userData);
+    console.log("Registering user with data:", userData); // Debug
     const response = await fetchAPI("auth/register", "POST", userData);
+    console.log("Registration response:", response.data); // Debug
     return response;
   } catch (error) {
     console.error("Registration failed:", error.message);
     throw error;
   }
 };
-
 export const createAPIKey = async (accessToken) => {
   try {
     return await fetchAPI("auth/create-api-key", "POST", {}, accessToken);

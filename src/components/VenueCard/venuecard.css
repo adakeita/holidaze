@@ -1,4 +1,7 @@
 .CONTAINER_VENUECARD {
+  width: 90%;
+  height: 525px;
+  margin: 0 auto 2rem;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -7,13 +10,11 @@
   border-radius: 12px;
   text-decoration: none;
   color: inherit;
-  width: 90%;
-  height: 525px;
-  margin: 0 auto;
 }
 
 .CONTAINER_VENUECARD:hover {
   transform: scale(1.05);
+  background: #f3eee9;
   box-shadow: 2px 2px 16px #726b659e;
 }
 

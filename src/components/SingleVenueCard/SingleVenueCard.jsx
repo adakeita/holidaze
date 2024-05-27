@@ -1,5 +1,8 @@
+import React, { useState } from "react";
 import PropTypes from "prop-types";
+import BookingCalendar from "../BookingCalendar/BookingCalendar";
 import CustomerBookingForm from "../CustomerBookingForm/CustomerBookingForm";
+import Modal from "../Modal/Modal";
 import { useAuth } from "../../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import "./singlevenuecard.css";
@@ -9,6 +12,20 @@ const SingleVenueCard = ({ venue }) => {
     venue.media[0]?.url ||
     "https://images.unsplash.com/photo-1592921870789-04563d55041c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80";
   const { authState } = useAuth();
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+
+  const handleOpenBookingModal = () => {
+    setIsBookingModalOpen(true);
+  };
+
+  const handleCloseBookingModal = () => {
+    setIsBookingModalOpen(false);
+  };
+
+  const bookedRanges = venue.bookings.map((booking) => ({
+    start: new Date(booking.dateFrom),
+    end: new Date(booking.dateTo),
+  }));
 
   return (
     <div className="SINGLEVENUE-CARD">
@@ -57,7 +74,7 @@ const SingleVenueCard = ({ venue }) => {
             </div>
             <div className="VENUE-PRICE_SINGLEVENUE">
               <h4 className="VENUE-INFO-HEADER">Price</h4>
-                <p>${venue.price}/night</p>
+              <p>${venue.price}/night</p>
             </div>
             <div className="VENUE-MAX_SINGLEVENUE">
               <h4 className="VENUE-INFO-HEADER">Max Guests</h4>
@@ -74,8 +91,15 @@ const SingleVenueCard = ({ venue }) => {
             </ul>
           </div>
           <div className="BOOKING-SECTION_SINGLEVENUE">
+            <h4 className="VENUE-INFO-HEADER">Available dates</h4>
+            <BookingCalendar bookedDates={bookedRanges} />
             {authState.isAuthenticated ? (
-              <CustomerBookingForm venue={venue} />
+              <button
+                className="BOOK-NOW-BTN_SINGLEVENUE"
+                onClick={handleOpenBookingModal}
+              >
+                Book Now
+              </button>
             ) : (
               <div className="LOGIN-SIGNUP-WRAPPER">
                 <p className="LOGIN-MSG_SINGLEVENUE">
@@ -95,6 +119,14 @@ const SingleVenueCard = ({ venue }) => {
           </div>
         </div>
       </section>
+
+      <Modal
+        isOpen={isBookingModalOpen}
+        onClose={handleCloseBookingModal}
+        title="Book this venue"
+      >
+        <CustomerBookingForm venue={venue} onClose={handleCloseBookingModal} />
+      </Modal>
     </div>
   );
 };

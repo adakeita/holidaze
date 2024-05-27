@@ -118,6 +118,26 @@ export const updateVenue = async (id, venueData, accessToken, apiKey) => {
   }
 };
 
+// Fetch bookings for a specific venue
+export const fetchBookingsForVenue = async (venueId, accessToken, apiKey) => {
+  try {
+    const response = await fetchAPI(
+      `holidaze/bookings?venueId=${venueId}&_customer=true`,
+      "GET",
+      null,
+      accessToken,
+      apiKey
+    );
+    return response.data;
+  } catch (error) {
+    console.error(
+      `Failed to fetch bookings for venue ${venueId}:`,
+      error.message
+    );
+    throw new Error(`Failed to fetch bookings for venue ${venueId}`);
+  }
+};
+
 export const deleteVenue = async (id, accessToken, apiKey) => {
   try {
     const response = await fetchAPI(
@@ -127,10 +147,14 @@ export const deleteVenue = async (id, accessToken, apiKey) => {
       accessToken,
       apiKey
     );
+
     if (response.status === 204) {
       return { success: true };
     }
-    throw new Error("Unexpected response status");
+
+    // If the response is not 204, try to parse it
+    const data = await response.json();
+    throw new Error(data.message || "Unexpected response status");
   } catch (error) {
     console.error(`Failed to delete venue with ID ${id}:`, error.message);
     throw new Error(`Failed to delete venue with ID ${id}`);

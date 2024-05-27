@@ -25,21 +25,6 @@ const Filters = ({ onSortChange }) => {
             <option value="price:desc">Price High to Low</option>
           </select>
         </div>
-        <div className="FILTER-CHECKBOX-WRAPPER">
-          {["wifi", "pets", "breakfast", "parking"].map((feature) => (
-            <div key={feature} className="CHECKBOX-ITEM">
-              <label className="CHECKBOX-LABEL">
-                <input
-                  type="checkbox"
-                  name={feature}
-                  onChange={handleCheckboxChange}
-                />
-                <span className="CHECKBOX-CUSTOM"></span>{" "}
-                {feature.charAt(0).toUpperCase() + feature.slice(1)}
-              </label>
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   );

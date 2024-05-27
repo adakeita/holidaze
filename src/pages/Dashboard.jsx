@@ -30,29 +30,34 @@ const Dashboard = () => {
   const userTitle = authState.isVenueManager ? "Venue Manager" : "Adventurer";
 
   return (
-    <div className="dashboard-container">
-      <header className="dashboard-header">
+    <div className="PAGE-CONTAINER">
+    <div className="DASHBOARD-CONTAINER">
+      <header className="DASHBOARD-HEADER">
         <h1>Dashboard</h1>
-        <p className="user-title">{userTitle}</p>
+        <p className="USER-TITLE">{userTitle}</p>
       </header>
       <section className="TOP-SECTION_DASHBOARD">
-        <div className="avatar-section">
+        <div className="AVATAR-SECTION">
           <AvatarManagement />
         </div>
         <div className="INFO-SECTION">
           <h2 className="HEADER-INFO_DASHBOARD">Profile Information</h2>
           <div className="ROLE-WRAPPER_DASHBOARD">
-          <p>{authState.isVenueManager ? 'Logged in as venuemanager' : 'Logged in as customer'}</p>
+            <p>
+              {authState.isVenueManager
+                ? "Logged in as venuemanager"
+                : "Logged in as customer"}
+            </p>
           </div>
           <p>{authState.user.name}</p>
-          <p>
-            {authState.user.email}
-          </p>
+          <p>{authState.user.email}</p>
         </div>
       </section>
-      <div className="bookings-section">
-        {authState.isVenueManager ? <VenueManagement /> : <CustomerBookings />}
+      <div className="BOOKINGS-SECTION">
+        {authState.isVenueManager && <VenueManagement />}
+        <CustomerBookings />
       </div>
+    </div>
     </div>
   );
 };

@@ -5,6 +5,7 @@ import Register from "../pages/Register";
 import Venues from "../pages/Venues";
 import VenueDetails from "../pages/VenueDetails";
 import Dashboard from "../pages/Dashboard";
+import Contact from "../pages/Contact";
 
 function AppRoutes() {
   return (
@@ -15,6 +16,7 @@ function AppRoutes() {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/contact" element={<Contact />} />
     </Routes>
   );
 }
