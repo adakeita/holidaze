@@ -14,7 +14,7 @@
 
 .CONTAINER_VENUECARD:hover {
   transform: scale(1.05);
-  background: #f3eee9;
+  background: #f7f3ef;
   box-shadow: 2px 2px 16px #726b659e;
 }
 

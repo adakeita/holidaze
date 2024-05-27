@@ -109,7 +109,7 @@ function Home() {
             <div className="ARROW-WRAPPER">
               <img src={Arrow} alt="arrow icon" className="ARROW-IMG" />
             </div>
-            <div className="BOOK-WRAPPER">
+            <div className="BOOK-WRAPPER NOT-BTN_HOME">
               <img src={Book} alt="book" className="BOOK-IMG" />
               <p className="TEXT-STEPS_CUSTOMER">Book</p>
             </div>
@@ -183,7 +183,7 @@ function Home() {
             <div className="ARROW-WRAPPER">
               <img src={Arrow} alt="arrow icon" className="ARROW-IMG" />
             </div>
-            <div className="ADD-WRAPPER_VENUE-SECTION">
+            <div className="ADD-WRAPPER_VENUE-SECTION NOT-BTN_HOME">
               <img
                 src={Add}
                 alt="add venue icon"
@@ -194,7 +194,7 @@ function Home() {
             <div className="ARROW-WRAPPER">
               <img src={Arrow} alt="arrow icon" className="ARROW-IMG" />
             </div>
-            <div className="WAIT-WRAPPER_VENUE-SECTION">
+            <div className="WAIT-WRAPPER_VENUE-SECTION NOT-BTN_HOME">
               <img src={Guest} alt="guest icon" className="IMG_VENUE-SECTION" />
               <p className="TEXT-STEPS_CUSTOMER">Greet</p>
             </div>

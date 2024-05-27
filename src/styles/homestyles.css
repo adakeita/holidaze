@@ -279,20 +279,24 @@ polaroid
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 3px 4px 9px #474442a6;
 }
 
 .VIEW-VENUES-BUTTON {
     position: relative;
     width: 100%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
     border: none;
     cursor: pointer;
     overflow: hidden;
     padding: 0;
     background: none;
     transition:
-        box-shadow 0.3s ease,
-        transform 0.3s ease;
+        box-shadow 0.3s ease-in-out,
+        transform 0.3s ease-in-out;
 }
 
 .VIEW-VENUES-BUTTON:hover {
@@ -322,6 +326,7 @@ polaroid
 
 .VIEW-VENUES-TEXT {
     position: relative;
+    margin: 0;
     z-index: 1;
     color: white;
     font-size: 2rem;
@@ -347,6 +352,18 @@ polaroid
     height: 100%;
     z-index: 1;
     background: rgba(0, 0, 0, 0.4);
+}
+
+.NOT-BTN_HOME {
+    box-shadow: inset 5px 4px 6px rgb(0 0 0 / 17%);
+    cursor: default;  
+}
+
+.NOT-BTN_HOME:hover {
+    box-shadow: inset 5px 4px 6px rgb(0 0 0 / 17%);
+    border: none;
+    cursor: default;
+    rotate: 0;
 }
 
 /*bottom section*/

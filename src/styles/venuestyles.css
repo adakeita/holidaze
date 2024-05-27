@@ -11,3 +11,24 @@
     font-weight: bold;
 }
 
+.LOAD-MORE-SECTION {
+    display: flex;
+    justify-content: center;
+    margin: 1em 0;
+}
+
+.LOAD-MORE-BTN {
+    margin: 2rem 0;
+    border: none;
+    font-family: "Leauge Spartan", sans-serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.LOAD-MORE-BTN:hover {
+    text-decoration: underline;
+    scale: 1.05;
+    rotate: 3deg;
+}
