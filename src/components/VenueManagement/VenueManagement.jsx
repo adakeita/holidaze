@@ -7,7 +7,10 @@ import {
 import { useAuth } from "../../contexts/AuthContext";
 import OwnedVenueCard from "../OwnedVenueCard/OwnedVenueCard";
 import Modal from "../Modal/Modal";
+import FloatingBtn from "../FloatingBtn/FloatingBtn";
 import UpdateVenueForm from "../UpdateVenueForm/UpdateVenueForm";
+import CreateVenueForm from "../CreateVenueForm/CreateVenueForm";
+import { useAuth } from "../../contexts/AuthContext";
 import "./venuemanagement.css";
 
 const VenueManagement = () => {
@@ -16,6 +19,15 @@ const VenueManagement = () => {
   const [loading, setLoading] = useState(true);
   const [editingVenue, setEditingVenue] = useState(null);
   const [selectedBooking, setSelectedBooking] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   useEffect(() => {
     const loadVenues = async () => {
@@ -159,6 +171,14 @@ const VenueManagement = () => {
           )}
         </Modal>
       )}
+      {authState.isVenueManager && <FloatingBtn onClick={openModal} />}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        title="Create a New Venue"
+      >
+        <CreateVenueForm onClose={closeModal} />
+      </Modal>
     </div>
   );
 };
