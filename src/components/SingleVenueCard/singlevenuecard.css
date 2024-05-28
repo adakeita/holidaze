@@ -15,24 +15,26 @@
 }
 
 .IMG-OVERLAY_SINGLEVENUE {
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    color: white;
-    padding: 20px;
-    width: 100%;
-    text-align: left;
     position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0 0 0 / 75%);
+    z-index: 1;
     filter: opacity(0.5);
-    bottom: 0;
 }
 
 .IMG-INFO_SINGLEVENUE {
+    position: relative;
+    z-index: 2; /* Higher z-index */
     width: 100%;
     height: 100%;
-    z-index: 99;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    color: white;
+    padding: 20px;
 }
 
 .HEADER_SINGLEVENUE-IMG {
@@ -54,6 +56,11 @@
     font-size: 1.2rem;
 }
 
+.STARS_SINGLEVENUE_IMG {
+    color: rgb(255, 215, 0);
+    text-shadow: 2px 2px 3px #212020;
+}
+
 .EXTRAS-WRAPPER_SINGLEVENUE-IMG {
     display: flex;
     gap: 0.5rem;
@@ -61,13 +68,21 @@
 }
 
 .BOTTOM-SECTION_SINGLEVENUE {
-    width: 95%;
+    width: 90%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
 }
 
+.VENUE-INFO-HEADER {
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
 .INFO-BOOKING-WRAPPER_SINGLEVENUE {
+    max-width: 1150px;
     margin: 2rem 0;
     display: flex;
     flex-direction: row;
@@ -76,7 +91,7 @@
 }
 
 .VENUEINFO_BOTTOM-SECTION {
-    width: 45%;
+    width: 35%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -86,15 +101,37 @@
     margin-bottom: 1.34rem;
 }
 
-.VENUE-DESC_SINGLEVENUE, .VENUE-PRICE_SINGLEVENUE, .VENUE-MAX_SINGLEVENUE {
+.VENUE-DESC_SINGLEVENUE,
+.VENUE-PRICE_SINGLEVENUE,
+.VENUE-MAX_SINGLEVENUE {
     margin: 1.34em 0;
 }
 
 .VENUE-EXTRAS_SINGLEVENUE {
     width: 20%;
+    max-width: 165px;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+
+.VENUE-EXTRAS-ITEM {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1rem;
+    margin-bottom: 1.3rem;
+}
+
+.VENUE-EXTRAS-ITEM img {
+    width: 35px;
+}
+
+.VENUES-EXTRAS-LIST {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
 }
 
 .EXTRAS-WRAPPER_SINGLEVENUE-IMG .stars {
@@ -102,28 +139,166 @@
     text-shadow: 3px 3px 6px #232729e6;
 }
 
-.badge {
-    background: white;
-    color: black;
+.IMG-BADGE_SINGLEVENUE {
     padding: 0.2rem 0.5rem;
+    border: 1px solid white;
     border-radius: 5px;
     font-size: 0.8rem;
+    background: #ffd065;
+    color: black;
 }
 
-.venue-location,
-.venue-description,
-.venue-price,
-.venue-ammeneties {
-    margin: 1rem 0;
-}
-
-.venue-ammeneties ul {
-    list-style: none;
-    padding: 0;
-}
-
-.venue-ammeneties li {
+.BOOKING-SECTION_SINGLEVENUE {
+    width: 35%;
+    max-width: 300px;
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    flex-direction: column;
+}
+
+.RATING_SINGLEVENUE,
+.STARS_SINGLEVENUE {
+    margin: 0 0.5rem;
+    font-size: 1.2rem;
+}
+
+.BOOKING-SECTION_SINGLEVENUE .VENUE-INFO-HEADER {
+    margin-bottom: 1rem;
+}
+
+.BOOK-NOW-BTN_SINGLEVENUE {
+    padding: 1.5rem 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    text-shadow: 1px 1px 2px #232729e6;
+    transition: all 0.3s ease-in-out;
+}
+
+.BOOK-NOW-BTN_SINGLEVENUE:hover {
+    scale: 1.1;
+    text-decoration: underline;
+    rotate: -3deg;
+}
+
+.BOOKING-SECTION_SINGLEVENUE .LOGIN-SIGNUP-WRAPPER {
+    width: 100%;
+    flex-direction: column;
+}
+
+.LOGIN_SINGLEVENUE {
+    width: 60%;
+    margin: 1rem;
+    padding: 0.25rem 0.5rem;
+    background-color: #fdf1da;
+    border-radius: 5px;
+    border: 1px solid #333;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.205);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.LOGIN_SINGLEVENUE:hover {
+    font-weight: bold;
+    background-color: #ffc6b1;
+    scale: 1.05;
+    rotate: -2deg;
+}
+
+@media screen and (max-width: 900px) {
+    .SINGLEVENUE-CARD {
+        flex-direction: column;
+    }
+
+    .IMG_SINGLEVENUE {
+        height: 400px;
+    }
+
+    .IMG-OVERLAY_SINGLEVENUE {
+        padding: 10px;
+    }
+
+    .IMG-INFO_SINGLEVENUE {
+        height: 100%;
+    }
+
+    .NAME_SINGLEVENUE-IMG {
+        font-size: 2.5rem;
+    }
+
+    .RATING-WRAPPER_SINGLEVENUE-IMG {
+        font-size: 1.5rem;
+    }
+
+    .INFO-BOOKING-WRAPPER_SINGLEVENUE {
+        flex-direction: column;
+    }
+
+    .VENUEINFO_BOTTOM-SECTION {
+        width: 100%;
+    }
+
+    .VENUE-PRICE_SINGLEVENUE,
+    .VENUE-MAX_SINGLEVENUE {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .VENUE-PRICE-P,
+    .VENUE-MAX-P {
+        font-size: 1.4rem;
+        text-decoration: underline;
+    }
+
+    .VENUE-EXTRAS_SINGLEVENUE {
+        width: 100%;
+        max-width: 100%;
+        margin: 1.5rem auto 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .VENUE-EXTRAS-LIST {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .VENUE-EXTRAS-ITEM {
+        flex-direction: row;
+        justify-content: space-around;
+        font-size: 0.9rem;
+    }
+
+    .VENUE-EXTRAS-ITEM img {
+        width: 25px;
+    }
+
+    .BOOKING-SECTION_SINGLEVENUE {
+        width: 100%;
+        max-width: 100%;
+        margin-top: 1rem;
+    }
+    .BOOKING-CALENDAR_WRAPPER .react-calendar {
+        margin: 0.5rem 0;
+    }
+
+    .BOOKING-SECTION_SINGLEVENUE .LOGIN-SIGNUP-WRAPPER {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .VENUE-PRICE_SINGLEVENUE,
+    .VENUE-MAX_SINGLEVENUE {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }

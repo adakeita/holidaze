@@ -9,19 +9,19 @@ const SearchOverlay = ({ searchTerm, searchResults, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center sm:w-full">
-      <div className="bg-white p-8 rounded-lg shadow-lg relative w-full md:w-11/12 h-5/6 overflow-y-auto">
+    <div className="tw-fixed tw-inset-0 tw-bg-black tw-bg-opacity-50 tw-z-50 tw-flex tw-justify-center tw-items-center tw-sm:w-full">
+      <div className="tw-bg-white tw-p-8 tw-rounded-lg tw-shadow-lg tw-relative tw-w-full tw-md:w-11/12 tw-h-5/6 tw-overflow-y-auto">
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-xl font-bold"
+          className="tw-absolute tw-top-2 tw-right-2 tw-text-4xl tw-font-bold"
         >
           &times;
         </button>
 
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+        <h2 className="tw-text-2xl tw-font-semibold tw-text-gray-800 mb-4">
           Search Results for "{searchTerm}"
         </h2>
-        <div className="searchresult-wrapper items-center w-11/12 h-full overflow-scroll flex justify-center flex-wrap">
+        <div className="searchresult-wrapper tw-items-center tw-w-11/12 tw-h-full tw-overflow-scroll tw-flex tw-justify-around tw-flex-wrap">
           {searchResults.length > 0 ? (
             searchResults.map((result) => (
               <VenueCard

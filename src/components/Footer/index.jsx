@@ -43,7 +43,6 @@ const Footer = () => {
           </section>
         </div>
         <section className="FOOTER-CONTENT-RIGHT">
-          <h5 className="HEADER_RIGHT-FOOTER">Find me here</h5>
           <div className="SOCIAL-WRAPPER_FOOTER">
             <div className="SOCIAL-MEDIA-LINKS_FOOTER">
               <a

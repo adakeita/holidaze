@@ -22,13 +22,16 @@ const RegisterForm = () => {
     if (!formData.name) newErrors.name = "Name is required";
     if (!formData.email) {
       newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email address is invalid";
+    } else if (!/\S+@stud\.noroff\.no$/.test(formData.email)) {
+      newErrors.email = "Email must end with @stud.noroff.no";
     }
     if (!formData.password) {
       newErrors.password = "Password is required";
     } else if (formData.password.length < 6) {
       newErrors.password = "Password must be at least 6 characters long";
+    }
+    if (formData.avatarUrl && !/^https?:\/\/.+\..+/.test(formData.avatarUrl)) {
+      newErrors.avatarUrl = "Avatar URL must be a valid URL";
     }
 
     return newErrors;
@@ -56,17 +59,21 @@ const RegisterForm = () => {
           password: formData.password,
           venueManager: formData.venueManager,
           avatar: {
-            url: formData.avatarUrl || "default-avatar-url.jpg",
+            url:
+              formData.avatarUrl ||
+              "https://images.unsplash.com/photo-1536164261511-3a17e671d380?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D",
             alt: formData.name,
           },
         };
-        await register(profileData); // Use the register from AuthContext
+        await register(profileData); // Use AuthContext
         setIsModalOpen(true);
-        setTimeout(() => navigate("/dashboard"), 3000); // Redirect after 3 seconds
+        setTimeout(() => navigate("/dashboard"), 3000); // 3 seconds Redirect
       } catch (error) {
+        console.error("Registration failed:", error);
+
         const apiErrors = error.response?.data?.errors || [];
         const newErrors = apiErrors.reduce((acc, apiError) => {
-          if (apiError.path) {
+          if (apiError.path && apiError.path.length > 0) {
             apiError.path.forEach((path) => {
               acc[path] = apiError.message;
             });
@@ -76,6 +83,10 @@ const RegisterForm = () => {
           }
           return acc;
         }, {});
+        if (!newErrors.form) {
+          newErrors.form =
+            "Failed to register. Check the form and try again. The username or email might be taken.";
+        }
         setErrors(newErrors);
       }
     }
@@ -85,7 +96,7 @@ const RegisterForm = () => {
     <div className="REGISTER-FORM-CONTAINER">
       <h1>Register</h1>
       <p>Create an account to access all features.</p>
-      <form onSubmit={handleSubmit} noValidate>
+      <form onSubmit={handleSubmit}>
         <div className="FORM-ITEM_WRAPPER_REGISTER">
           <label className="FORM-LABEL_REGISTER" htmlFor="name">
             Name
@@ -159,19 +170,21 @@ const RegisterForm = () => {
             Avatar URL <span>(optional)</span>
           </label>
           <input
-            className={`FORM-INPUT_REGISTER ${errors.avatar ? "invalid" : ""}`}
+            className={`FORM-INPUT_REGISTER ${
+              errors.avatarUrl ? "invalid" : ""
+            }`}
             id="avatarUrl"
             type="url"
             name="avatarUrl"
             placeholder="Enter avatar URL"
             value={formData.avatarUrl}
             onChange={handleChange}
-            aria-invalid={errors.avatar ? "true" : "false"}
+            aria-invalid={errors.avatarUrl ? "true" : "false"}
             aria-describedby="avatarUrlHelp"
           />
-          {errors.avatar && (
+          {errors.avatarUrl && (
             <span id="avatarUrlError" className="ERROR-MESSAGE_REGISTER">
-              {errors.avatar}
+              {errors.avatarUrl}
             </span>
           )}
         </div>
@@ -199,7 +212,11 @@ const RegisterForm = () => {
         </div>
 
         <div className="ERROR-CONTAINER_REGISTER">
-          {errors.form && <span className="GENREAL-ERROR-MESSAGE_REGISTER">{errors.form}</span>}
+          {errors.form && (
+            <span className="GENERAL-ERROR-MESSAGE_REGISTER">
+              {errors.form}
+            </span>
+          )}
         </div>
       </form>
       <Modal

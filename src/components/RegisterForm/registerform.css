@@ -1,7 +1,7 @@
 /* RegisterForm CSS */
 .REGISTER-FORM-CONTAINER {
     max-width: 600px;
-    margin: 1rem auto 2.5rem;
+    margin: 1.5rem auto 2.5rem;
     padding: 20px;
 }
 
@@ -139,4 +139,15 @@ input:-internal-autofill-selected {
     font-size: 1.5em;
     font-weight: 600;
     margin-bottom: 0.5rem;
+}
+
+.ERROR-CONTAINER_REGISTER {
+    margin-top: 1rem;
+}
+
+.GENERAL-ERROR-MESSAGE_REGISTER {
+    color: red;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-top: 5px;
 }

@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
   const register = async (userData) => {
     try {
       const { data } = await authService.registerUser(userData);
-      console.log("Registration successful:", data); // Debugging statement
+      // Debugging statement
       await login(userData.email, userData.password); // Log in after registration
     } catch (error) {
       console.error("Registration failed:", error.message);
@@ -38,7 +38,6 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       const { data } = await authService.login(email, password);
-      console.log("Login response data:", data); // Debugging statement
       const authData = {
         isAuthenticated: true,
         user: data,
@@ -47,7 +46,6 @@ export const AuthProvider = ({ children }) => {
         isVenueManager:
           data.venueManager !== undefined ? data.venueManager : false,
       };
-      console.log("Auth data being set:", authData); // Debugging statement
       sessionStorage.setItem("authState", JSON.stringify(authData));
       setAuthState(authData);
     } catch (error) {
@@ -77,6 +75,7 @@ export const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
-};3
+};
+3;
 
 export const useAuth = () => useContext(AuthContext);

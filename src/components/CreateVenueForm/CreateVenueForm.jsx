@@ -57,7 +57,6 @@ const CreateVenueForm = ({ onClose }) => {
         authState.apiKey
       );
       setMessage("Venue created successfully!");
-      console.log("Venue created:", response);
       setLoading(false);
       onClose();
     } catch (error) {
@@ -69,7 +68,6 @@ const CreateVenueForm = ({ onClose }) => {
 
   return (
     <form className="create-venue-form" onSubmit={handleSubmit}>
-      <h2>Create a New Venue</h2>
       <label>
         Name:
         <input

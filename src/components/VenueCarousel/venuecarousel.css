@@ -33,11 +33,63 @@
 
 .HEADER_CAROUSEL {
   color: white;
-  font-size: 2.7rem;
+  font-size: 2.8rem;
   font-weight: 700;
   text-shadow: 5px 5px 6px rgb(0 0 0 / 81%);
 }
 
 .NAVIGATION_CAROUSEL {
   z-index: 3;
+}
+
+.RATING_CAROUSEL {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.STARS_CAROUSEL {
+  margin: 0 0.5rem;
+  color: gold;
+  font-size: 1.4rem;
+  text-shadow: 3px 3px 6px #232729e6;
+}
+
+.PRICE-WRAPPER_CAROUSEL {
+  font-size: 2.2rem;
+  text-shadow: 2px 3px 3px #000000;
+}
+
+.EXTRAS-BADGE_CAROUSEL {
+  background-color: #ffd065db;
+  color: #333;
+  border-radius: 6px;
+  padding: 0.25rem 1rem;
+  margin: 0 0.5rem;
+  font-size: 1rem;
+  box-shadow: 2px 2px 5px #141312e0;
+}
+
+.VIEW-LINK_WRAPPER {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  z-index: 3;
+}
+
+.VIEW-LINK_CAROUSEL {
+  padding: 0.5rem 1rem;
+  background-color: #ffd065db;
+  color: black;
+  border-radius: 6px;
+  font-size: 1.4rem;
+  text-decoration: none;
+  box-shadow: 2px 2px 6px #141312e0;
+  transition: background-color 0.3s ease;
+}
+
+.VIEW-LINK_CAROUSEL:hover {
+  background-color: #ffc107;
 }

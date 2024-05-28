@@ -21,15 +21,16 @@
 }
 
 .TOP-SECTION_DASHBOARD {
-    height: 20rem;
+    height: 22rem;
     min-height: 400px;
     max-width: 850px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.avatar-section {
+.AVATAR-SECTION {
     display: flex;
     height: 100%;
     width: 50%;
@@ -93,9 +94,54 @@
 .OVERVIEW_HEADER {
     color: #333;
     font-size: 1.9rem;
+    margin-top: 1rem;
+    font-weight: 600;
+    font-family: "League Spartan", sans-serif;
+}
+
+.HEADER_USER-VENUES {
+    margin-bottom: 1em;
+    font-size: 1.9rem;
+    color: #333;
+    font-weight: 600;
+    font-family: "League Spartan", sans-serif;
 }
 
 @media screen and (max-width: 768px) {
+    .TOP-SECTION_DASHBOARD {
+        height: 100%;
+        margin: 3rem auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .AVATAR-SECTION {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .avatar-container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .INFO-SECTION {
+        display: flex;
+        margin: 2.5rem 0;
+        height: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
     .OVERVIEW-CONTAINER_BOOKING {
         width: 90%;
         margin: 0 auto;

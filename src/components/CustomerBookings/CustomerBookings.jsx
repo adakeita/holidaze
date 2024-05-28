@@ -41,8 +41,6 @@ const CustomerBookingOverview = () => {
           setUpcomingBookings(upcoming);
           setPreviousBookings(previous);
 
-          console.log("Upcoming bookings:", upcoming);
-          console.log("Previous bookings:", previous);
         } catch (error) {
           console.error("Error fetching bookings:", error);
         }
@@ -54,7 +52,7 @@ const CustomerBookingOverview = () => {
 
   return (
     <section className="OVERVIEW-CONTAINER_BOOKING">
-      <h3 className="OVERVIEW_HEADER">Your Upcoming Bookings</h3>
+      <h3 className="OVERVIEW_HEADER">Bookings || Adventurer</h3>
       <div className="BOOKING-CONTAINER tw-venues-grid tw-grid tw-grid-cols-1 tw-gap-9 tw-gap-row-9 md:tw-grid-cols-2 sm:tw-gap-row-2 sm:tw-gap-8 lg:tw-gap-6 lg:tw-grid-cols-3">
         {upcomingBookings.length > 0 ? (
           upcomingBookings.map((booking) => (
@@ -64,7 +62,7 @@ const CustomerBookingOverview = () => {
           <p>No upcoming bookings found.</p>
         )}
       </div>
-      <h3 className="OVERVIEW_HEADER">Previous Stays</h3>
+      <h3 className="OVERVIEW_HEADER">Previous Stays || Adventurer</h3>
       <div className="BOOKING-CONTAINER tw-venues-grid tw-grid tw-grid-cols-1 tw-gap-9 tw-gap-row-9 md:tw-grid-cols-2 sm:tw-gap-row-2 sm:tw-gap-8 lg:tw-gap-6 lg:tw-grid-cols-3">
         {previousBookings.length > 0 ? (
           previousBookings.map((booking) => (

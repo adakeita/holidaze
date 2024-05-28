@@ -18,10 +18,7 @@ export async function fetchAPI(
     body: data ? JSON.stringify(data) : null,
   };
 
-  console.log("API Request:", { endpoint, options });
-
   const response = await fetch(`${API_BASE_URL}/${endpoint}`, options);
-  console.log("API Response:", response);
 
   if (!response.ok) {
     const errorData = await response.json();
@@ -39,7 +36,6 @@ export const fetchSearchResults = async (searchTerm) => {
     const filteredData = data.filter((venue) =>
       venue.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    console.log("Fetched venues:", filteredData);
 
     return filteredData;
   } catch (error) {

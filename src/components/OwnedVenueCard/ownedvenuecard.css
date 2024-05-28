@@ -69,7 +69,8 @@
 }
 
 .BADGE_OWNED-VENUE {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   padding: 0.25rem 0.5rem;
   background: #ffd065db;
   border-radius: 6px;
@@ -86,10 +87,10 @@
 }
 
 .UPDATE-DELETE {
-  width: 60%;
+  width: 100%;
   padding: 0 1rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .UPDATE-BTN,
@@ -101,12 +102,18 @@
   border: none;
   cursor: pointer;
   box-shadow: 2px 2px 3px #2d2b2b82;
-  transition: background-color 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .UPDATE-BTN {
   background-color: #2899b3;
   color: #fff;
+}
+
+.UPDATE-BTN:hover {
+  background-color: #1f7a8c;
+  scale: 1.05;
+  rotate: -3deg;
 }
 
 .DELETE-BTN {
@@ -116,6 +123,8 @@
 
 .DELETE-BTN:hover {
   background-color: #d32f2f;
+  scale: 1.05;
+  rotate: 3deg;
 }
 
 .VIEW-CALENDAR-BTN {
@@ -131,8 +140,23 @@
   text-decoration: underline;
 }
 
-.react-calendar {
-  margin: 2em auto;
+.CALENDAR_WRAPPER {
+  display: none;
+}
+
+.CALENDAR_WRAPPER.active {
+  display: block;
+}
+
+
+.OWNED-VENUE-CARD {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.OWNED-VENUE-CARD .react-calendar {
+  margin: 0.5erm auto;
+  box-shadow: none;
 }
 
 .react-calendar__navigation {
@@ -181,6 +205,17 @@
     margin: 1rem 0 1em;
   }
 
+  .UPDATE-DELETE {
+    width: 60%;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .CALENDAR_WRAPPER {
+    display: none;
+  }
+  
   .CALENDAR_WRAPPER {
     border-top: 2px solid black;
   }

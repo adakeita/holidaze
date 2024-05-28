@@ -8,3 +8,10 @@
     padding: 2em 1em;
     margin: 1em 0.5em;
 }
+
+@media screen and (max-width: 768px) {
+    .searchresult-wrapper .CONTAINER_VENUECARD {
+        width: 100%;
+    }
+    
+}

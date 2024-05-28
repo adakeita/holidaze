@@ -19,10 +19,8 @@ const randomizeVenues = (venues) => {
 
 // Function to fetch all venues with query parameters
 export const fetchVenues = async (queryParams) => {
-  console.log("fetchVenues called with params:", queryParams);
   try {
     const response = await fetchAPI(`holidaze/venues${queryParams}`, "GET");
-    console.log("fetchVenues response:", response.data);
     return response.data;
   } catch (error) {
     console.error("Failed to fetch venues:", error.message);
@@ -32,7 +30,7 @@ export const fetchVenues = async (queryParams) => {
 
 // Function to fetch a venue by ID
 export const fetchVenueById = async (id) => {
-  const queryParams = "?_bookings=true";
+  const queryParams = "?_bookings=true&_owner=true";
   try {
     const response = await fetchAPI(
       `holidaze/venues/${id}${queryParams}`,
@@ -47,11 +45,9 @@ export const fetchVenueById = async (id) => {
 
 // Function to fetch top-rated venues
 export const fetchTopRatedVenues = async () => {
-  console.log("fetchTopRatedVenues called");
   const queryParams = "?sort=rating&sortOrder=desc&limit=50";
   try {
     const response = await fetchAPI(`holidaze/venues${queryParams}`, "GET");
-    console.log("fetchTopRatedVenues response:", response.data);
 
     // Filter venues to include only those with images and limit to top 5
     const venuesWithImages = response.data.filter(
@@ -67,7 +63,6 @@ export const fetchTopRatedVenues = async () => {
 
 // Function to fetch latest unique venues
 export const fetchLatestUniqueVenues = async () => {
-  console.log("fetchLatestUniqueVenues called");
   try {
     const response = await fetchAPI(
       `holidaze/venues?limit=20&sort=created&sortOrder=desc`,
@@ -78,7 +73,6 @@ export const fetchLatestUniqueVenues = async () => {
     )
       .slice(0, 5)
       .map((name) => response.data.find((venue) => venue.name === name));
-    console.log("Filtered unique venues:", uniqueVenues);
     return uniqueVenues;
   } catch (error) {
     console.error("Failed to fetch latest unique venues:", error.message);

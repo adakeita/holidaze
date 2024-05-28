@@ -1,13 +1,14 @@
-
 /*--------DEFAULT CALENDAR STYLING-------*/
 
 .react-calendar {
     width: 100%;
     max-width: 100%;
+    border-radius: 6px;
     background: white;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.125em;
     border: none;
+    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .react-calendar--doubleView {
@@ -44,12 +45,16 @@
 }
 
 .react-calendar__navigation {
-    background-color: #657b83;
+    background-color: #ff6347;
     color: white;
-    height: 40px;
+    height: 50px;
+    border-radius: 6px 6px 0px 0px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    text-align: center;
+    margin-bottom: 1em;
+    padding: 0.5rem;
 }
 
 .react-calendar__navigation button {
@@ -57,7 +62,10 @@
     color: white;
     font-size: 1.2em;
     border: none;
-    width: 100%;
+    width: 15%;
+    padding: 0.5rem 0;
+    margin: 0 0.5rem;
+    transition: all 0.3s ease-in-out;
 }
 
 .react-calendar__navigation button:disabled {
@@ -66,7 +74,9 @@
 
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {
-    background-color: #e6e6e6;
+    border: 1px solid white;
+    border-radius: 6px;
+    scale: 1.05;
 }
 
 .react-calendar__month-view__weekdays {
@@ -154,7 +164,7 @@
     font-size: 0.875em;
     border-radius: 6px;
     margin: 3px !important;
-  }
+}
 
 .react-calendar__tile--hasActive {
     background: #76baff;
@@ -181,16 +191,35 @@
 }
 
 .booked {
+    background-color: #d33d23ad !important;
+    color: #000;
+    border-radius: 6px;
+    pointer-events: none;
+    cursor: default;
+}
+
+/*--------VIEW AVAILABLE CALENDAR STYLING-------*/
+
+.BOOKING-SECTION_SINGLEVENUE .booked {
+    background-color: #d33d23ad !important;
+    pointer-events: none;
+    cursor: pointer;
+}
+
+.BOOKING-SECTION_SINGLEVENUE .react-calendar__tile {
+    pointer-events: none;
+    cursor: default;
+}
+
+/*-------DASHBOARDCALENDAR----------*/
+
+.CALENDAR-WRAPPER .booked {
     background-color: #6ecc576c !important;
     color: #000;
     border-radius: 6px;
 }
 
-/*--------VIEW AVAILABLE CALENDAR STYLING-------*/
-
-
-.BOOKING-SECTION_SINGLEVENUE .booked{
-    background-color: #d33d23ad !important;
-    color: #000;
-    border-radius: 6px;
+.CALENDAR-WRAPPER .react-calendar__tile {
+    pointer-events: none;
+    cursor: default;
 }

@@ -1,9 +1,9 @@
 /* General Styling */
 .HEADER-CONTAINER {
     width: 100%;
-    background-color: #fff;
+    background-color: #f7f3ef;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 1rem 0;
+    padding: 1.5rem 0;
 }
 
 .HEADER-CONTENT {
@@ -36,6 +36,11 @@
     background: none;
     border: none;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.HAMBURGER-BTN:hover {
+    scale: 1.1;
 }
 
 .HAMBURGER-ICON {
@@ -65,25 +70,25 @@
 }
 
 .SEARCH-WRAPPER {
-    width: 90%;
-    margin: 0.5rem 0;
+    width: 85%;
+    margin: 2rem 0 1.5rem;
 }
 
 .SEARCHBAR {
     width: 100%;
-    padding: 0.25rem 0.5rem;
+    padding: 0.5rem 0.5rem;
     border-radius: 5px;
     border: 1px solid #ccc;
     background: white;
     font-style: italic;
-    box-shadow: inset 1px 2px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 3px 2px 4px rgb(0 0 0 / 24%);
 }
 
 .NAVLINKS-WRAPPER {
-    width: 100%;
+    width: 85%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .NAVLINK_NAVIGATION {
@@ -98,6 +103,7 @@
     text-decoration: underline;
     scale: 1.1;
     rotate: -2deg;
+    font-weight: bold;
 }
 
 .LOGOUT-WRAPPER {
@@ -112,38 +118,54 @@
     border-radius: 5px;
     cursor: pointer;
     box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
 }
 
 .LOGOUT-BTN:hover {
     background-color: #d32f2f;
+    scale: 1.1;
 }
 
 .LOGIN-SIGNUP-WRAPPER {
+    width: 90%;
+    margin: 1rem auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-around;
 }
 
 .LOGIN-BTN,
 .REGISTER-BTN {
     width: 80px;
-    padding: 0.5rem;
     margin: 0.5rem 0;
     border: 1px solid #333;
     border-radius: 5px;
     text-align: center;
     text-decoration: none;
     color: #333;
-    background-color: #fff;
+    box-shadow: 2px 3px 3px rgb(0 0 0 / 36%);
+    transition: all 0.3s ease-in-out;
+}
+
+.LOGIN-BTN {
+    background-color: #fdf1da;
+    padding: 0.5rem 1rem;
+}
+
+.REGISTER-BTN {
+    background-color: #ffd065;
+    padding: 0.5rem;
 }
 
 .LOGIN-BTN:hover,
 .REGISTER-BTN:hover {
-    background-color: #f0f0f0;
+   scale: 1.05;
+    font-weight: bold;
 }
 
 /* Media Queries */
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 778px) {
     .HEADER-CONTENT {
         flex-direction: row;
         justify-content: space-between;
@@ -164,13 +186,14 @@
     }
 
     .MENU-CONTENT-WRAPPER {
+        width: 85%;
+        margin: 0 1rem;
+        padding: 0 0.35rem;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        width: 85%;
         max-height: none;
-        padding: 0;
     }
 
     .SEARCH-WRAPPER {
@@ -210,11 +233,18 @@
         display: flex;  
     }
 
+    .LOGIN-BTN {
+        padding: 0.25rem 0.5rem;
+    }
+
+    .REGISTER-BTN {
+        padding: 0.25rem 1rem;
+    }
+
     .LOGIN-BTN, .REGISTER-BTN {
         margin: 0;
         width: 100%;
         display: block;
-        padding: 0.25rem 0.5rem;
     }
 
 }

@@ -27,7 +27,6 @@ const VenuesPage = () => {
     setLoading(true);
     try {
       const queryParams = `?limit=20&page=${page}&sort=${sortField}&sortOrder=${sortOrder}`;
-      console.log("Calling fetchVenues with", queryParams);
       const response = await fetchVenues(queryParams);
       if (page === 1) {
         setVenues(response);
@@ -42,12 +41,10 @@ const VenuesPage = () => {
   };
 
   useEffect(() => {
-    console.log("useEffect triggered - loading venues");
     loadVenues(currentPage, sort.field, sort.order);
   }, [sort, currentPage]);
 
   useEffect(() => {
-    console.log("VenuesPage mounted");
     return () => {
       console.log("VenuesPage unmounted");
     };
@@ -63,12 +60,10 @@ const VenuesPage = () => {
   };
 
   const openModal = () => {
-    console.log("Opening modal");
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
-    console.log("Closing modal");
     setIsModalOpen(false);
   };
 

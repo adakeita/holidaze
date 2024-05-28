@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./loginform.css";
 import { useAuth } from "../../contexts/AuthContext";
+import "./loginform.css";
 
 const LoginForm = () => {
   const { login } = useAuth();
@@ -43,7 +43,7 @@ const LoginForm = () => {
 
     try {
       await login(email, password);
-      navigate("/");
+      navigate("/dashboard");
     } catch (error) {
       setGeneralError("Invalid email or password. Please try again.");
     }
@@ -51,48 +51,57 @@ const LoginForm = () => {
 
   return (
     <div className="LOGINFORM-CONTAINER">
-      <form onSubmit={handleSubmit} className="LOGINFORM">
-        <div className="OVERLAY_LOGINFORM"></div>
-        <div className="CONTENT_LOGINFORM">
-          <div className="HEADER-WRAPPER_LOGINFORM">
-            <h2 className="HEADER_LOGINFORM">Login</h2>
-          </div>
-          <section className="INPUT-SECTION_LOGINFORM">
-            <div className="FORMFIELD_LOGINFORM">
-              <label htmlFor="email" className="LABEL_LOGINFORM">
-                Email
-              </label>
-              <input
-                id="email"
-                type="email"
-                placeholder="Email"
-                autoComplete="on"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="INPUT_LOGINFORM"
-              />
-              {emailError && <p className="ERROR_MSG">{emailError}</p>}
-            </div>
-            <div className="FORMFIELD_LOGINFORM">
-              <label htmlFor="password" className="LABEL_LOGINFORM">
-                Password
-              </label>
-              <input
-                id="password"
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="INPUT_LOGINFORM"
-              />
-              {passwordError && <p className="ERROR_MSG">{passwordError}</p>}
-            </div>
-          </section>
-          <button type="submit" className="SUBMIT-BTN_LOGINFORM">
-            Login
-          </button>
-          {generalError && <p className="ERROR_MSG">{generalError}</p>}
+      <form onSubmit={handleSubmit} className="LOGINFORM" noValidate>
+        <div className="HEADER-WRAPPER_LOGINFORM">
+          <h2 className="HEADER_LOGINFORM">Login</h2>
         </div>
+        <section className="INPUT-SECTION_LOGINFORM">
+          <div className="FORMFIELD_LOGINFORM">
+            <label htmlFor="email" className="LABEL_LOGINFORM">
+              Email
+            </label>
+            <input
+              id="email"
+              type="email"
+              placeholder="Email"
+              autoComplete="on"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className={`INPUT_LOGINFORM ${emailError ? "invalid" : ""}`}
+              aria-invalid={emailError ? "true" : "false"}
+              aria-describedby="emailError"
+            />
+            {emailError && (
+              <p id="emailError" className="ERROR_MSG">
+                {emailError}
+              </p>
+            )}
+          </div>
+          <div className="FORMFIELD_LOGINFORM">
+            <label htmlFor="password" className="LABEL_LOGINFORM">
+              Password
+            </label>
+            <input
+              id="password"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className={`INPUT_LOGINFORM ${passwordError ? "invalid" : ""}`}
+              aria-invalid={passwordError ? "true" : "false"}
+              aria-describedby="passwordError"
+            />
+            {passwordError && (
+              <p id="passwordError" className="ERROR_MSG">
+                {passwordError}
+              </p>
+            )}
+          </div>
+        </section>
+        <button type="submit" className="SUBMIT-BTN_LOGINFORM">
+          Login
+        </button>
+        {generalError && <p className="GENERAL-ERROR_MSG">{generalError}</p>}
       </form>
     </div>
   );

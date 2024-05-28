@@ -74,22 +74,20 @@ const Header = ({ onSearchChange }) => {
               </button>
             </div>
           )}
-          <section className="LOGIN-SIGNUP-WRAPPER">
-            {!authState.isAuthenticated && (
-              <>
-                <div className="LOGIN">
-                  <Link to="/login" className="LOGIN-BTN">
-                    Login
-                  </Link>
-                </div>
-                <div className="SIGNUP">
-                  <Link to="/register" className="REGISTER-BTN">
-                    Register
-                  </Link>
-                </div>
-              </>
-            )}
-          </section>
+          {!authState.isAuthenticated && (
+            <section className="LOGIN-SIGNUP-WRAPPER">
+              <div className="LOGIN">
+                <Link to="/login" className="LOGIN-BTN">
+                  Login
+                </Link>
+              </div>
+              <div className="SIGNUP">
+                <Link to="/register" className="REGISTER-BTN">
+                  Register
+                </Link>
+              </div>
+            </section>
+          )}
         </div>
       </div>
     </header>

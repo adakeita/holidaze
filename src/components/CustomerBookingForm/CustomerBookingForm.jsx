@@ -1,16 +1,28 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import { createBooking } from "../../services/bookingService";
 import { useAuth } from "../../contexts/AuthContext";
+import BookingCalendar from "../BookingCalendar/BookingCalendar";
 import "./customerbookingform.css";
+import "../../styles/react-calendar.css";
 
-const CustomerBookingForm = ({ venue, onClose }) => {
+const CustomerBookingForm = ({ venue, onClose, onBookingSuccess }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [guests, setGuests] = useState(1);
   const { authState } = useAuth();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+
+  const bookedDates = venue.bookings.map((booking) => ({
+    start: new Date(booking.dateFrom),
+    end: new Date(booking.dateTo),
+  }));
+
+  const setDateRange = (value) => {
+    setStartDate(value[0]);
+    setEndDate(value[1]);
+  };
 
   const handleBooking = async () => {
     if (!startDate || !endDate) {
@@ -31,9 +43,11 @@ const CustomerBookingForm = ({ venue, onClose }) => {
         authState.accessToken,
         authState.apiKey
       );
-      setMessage("Booking successful!");
+      setMessage("Booking successful! Redirecting to your dashboard...");
       setLoading(false);
-      onClose();
+      setTimeout(() => {
+        onBookingSuccess(); // Call the success handler
+      }, 3000);
     } catch (error) {
       console.error("Booking error:", error);
       setMessage(`Failed to create booking: ${error.message}`);
@@ -42,13 +56,15 @@ const CustomerBookingForm = ({ venue, onClose }) => {
   };
 
   return (
-    <div className="booking-form-container">
-      <h4 className="text-xl font-semibold text-gray-800">Book this venue</h4>
-      <div className="guests-input mt-4">
-        <label
-          htmlFor="guests"
-          className="block text-sm font-medium text-gray-700"
-        >
+    <div className="BOOKINGFORM-CONTAINER">
+      <div className="CALENDAR-SECTION_BOOKINGFORM">
+        <BookingCalendar
+          bookedDates={bookedDates}
+          onDateChange={setDateRange}
+        />
+      </div>
+      <div className="GUESTS-INPUT tw-mt-4">
+        <label htmlFor="guests" className="tw-block tw-font-medium">
           Number of guests
         </label>
         <input
@@ -58,18 +74,18 @@ const CustomerBookingForm = ({ venue, onClose }) => {
           onChange={(e) => setGuests(e.target.value)}
           min="1"
           max={venue.maxGuests}
-          className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="QT_BOOKINGFORM tw-mt-1 tw-block tw-w-full tw-px-3 tw-py-2 tw-bg-white tw-border tw-border-gray-300 tw-rounded-md tw-shadow-md tw-focus:outline-none tw-focus:ring-indigo-500 tw-focus:border-indigo-500"
         />
       </div>
       <button
         type="button"
         onClick={handleBooking}
         disabled={loading}
-        className="w-full flex justify-center py-2 px-4 mt-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-yellow-500 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400 disabled:bg-yellow-300"
+        className="BOOKING-BTN_BOOKINGFORM"
       >
         {loading ? "Booking..." : "Book now"}
       </button>
-      {message && <p className="text-center text-sm text-red-500">{message}</p>}
+      {message && <p className="tw-text-center tw-my-4">{message}</p>}
     </div>
   );
 };
@@ -77,6 +93,7 @@ const CustomerBookingForm = ({ venue, onClose }) => {
 CustomerBookingForm.propTypes = {
   venue: PropTypes.object.isRequired,
   onClose: PropTypes.func.isRequired,
+  onBookingSuccess: PropTypes.func.isRequired,
 };
 
 export default CustomerBookingForm;

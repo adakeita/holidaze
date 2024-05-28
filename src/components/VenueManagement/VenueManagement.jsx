@@ -21,11 +21,21 @@ const VenueManagement = () => {
     const loadVenues = async () => {
       if (authState.isAuthenticated && authState.isVenueManager) {
         try {
-          const queryParams = `?_owner=true`;
+          const queryParams = `?_owner=true&sort=created&sortOrder=desc`;
           const fetchedVenues = await fetchVenues(queryParams);
+
+          fetchedVenues.forEach((venue) => {
+            console.log(
+              `Venue: ${venue.name}, Owner: ${
+                venue.owner ? venue.owner.name : "No Owner"
+              }`
+            );
+          });
+
           const userVenues = fetchedVenues.filter(
             (venue) => venue.owner && venue.owner.name === authState.user.name
           );
+
           setVenues(userVenues);
         } catch (error) {
           console.error("Failed to fetch venues:", error.message);
@@ -88,7 +98,7 @@ const VenueManagement = () => {
 
   return (
     <div className="VENUE-MANAGEMENT-CONTAINER">
-      <h3 className="HEADER_USER-VENUES">Your Venues || Management</h3>
+      <h3 className="HEADER_USER-VENUES">My Venues || Management</h3>
       <div className="VENUE-LIST tw-venues-grid tw-grid tw-grid-cols-1 tw-gap-9 tw-gap-row-9 md:tw-grid-cols-2 sm:tw-gap-row-2 sm:tw-gap-8">
         {venues.length > 0 ? (
           venues.map((venue) => (

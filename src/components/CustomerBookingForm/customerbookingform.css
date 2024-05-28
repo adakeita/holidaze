@@ -1,16 +1,37 @@
-.booking-form-container {
+.venue-details-page .modal-header h2{
+    font-size: 2rem;
+}
+
+.BOOKINGFORM-CONTAINER {
     max-width: 500px;
     margin: 0 auto;
+    padding: 1rem;
 }
 
-.calendar-container {
-    margin-bottom: 20px;
+.CALENDAR-SECTION_BOOKINGFORM {
+    margin-bottom: 1rem 0 0;
 }
 
-.guests-input {
-    margin-bottom: 20px;
+.GUESTS-INPUT {
+    margin-bottom: 2rem;
 }
 
-button {
-    margin-top: 20px;
+.BOOKING-BTN_BOOKINGFORM {
+    width: 50%;
+    margin: 0 auto;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    border-radius: 6px;
+    font-size: 1.15rem;
+    font-family: "League Spartan", sans-serif;
+    font-weight: bold;
+    background: #96e796;
+    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.185);
+    transition: all 0.3s ease-in-out;
+}
+
+.BOOKING-BTN_BOOKINGFORM:hover {
+    background: #89da89;
+    scale: 1.05;
 }

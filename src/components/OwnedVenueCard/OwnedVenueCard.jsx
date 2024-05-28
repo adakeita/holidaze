@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Calendar from "react-calendar";
-import { fetchBookingsForVenue } from "../../services/venueService";
+import { fetchVenueById } from "../../services/venueService";
 import { useAuth } from "../../contexts/AuthContext";
 import "./ownedvenuecard.css";
 import "../../styles/react-calendar.css";
@@ -19,12 +19,8 @@ const OwnedVenueCard = ({
   useEffect(() => {
     const loadBookings = async () => {
       try {
-        const response = await fetchBookingsForVenue(
-          venue.id,
-          authState.accessToken,
-          authState.apiKey
-        );
-        setBookings(response);
+        const fetchedVenue = await fetchVenueById(venue.id); // Fetch venue with bookings
+        setBookings(fetchedVenue.bookings || []); // Set bookings
       } catch (error) {
         console.error("Failed to fetch bookings:", error.message);
       }
@@ -33,7 +29,7 @@ const OwnedVenueCard = ({
     if (isCalendarOpen) {
       loadBookings();
     }
-  }, [isCalendarOpen, venue.id, authState.accessToken, authState.apiKey]);
+  }, [isCalendarOpen, venue.id]);
 
   const handleDateClick = (date) => {
     const booking = bookings.find(
@@ -112,36 +108,34 @@ const OwnedVenueCard = ({
             </div>
             <button
               className="VIEW-CALENDAR-BTN"
-              onClick={() => setIsCalendarOpen(!isCalendarOpen)}
+              onClick={() => setIsCalendarOpen((prev) => !prev)}
             >
               {isCalendarOpen ? "Hide Calendar" : "View Calendar"}
             </button>
           </div>
         </div>
       </div>
-      {isCalendarOpen && (
-        <div className="CALENDAR_WRAPPER">
-          <Calendar
-            onClickDay={handleDateClick}
-            tileClassName={({ date, view }) =>
-              bookings.some(
-                (booking) =>
-                  new Date(booking.dateFrom) <= date &&
-                  new Date(booking.dateTo) >= date
-              )
-                ? "booked"
-                : "react-calendar__tile--disabled"
-            }
-            tileDisabled={({ date, view }) =>
-              !bookings.some(
-                (booking) =>
-                  new Date(booking.dateFrom) <= date &&
-                  new Date(booking.dateTo) >= date
-              )
-            }
-          />
-        </div>
-      )}
+      <div className={`CALENDAR_WRAPPER ${isCalendarOpen ? "active" : ""}`}>
+        <Calendar
+          onClickDay={handleDateClick}
+          tileClassName={({ date, view }) =>
+            bookings.some(
+              (booking) =>
+                new Date(booking.dateFrom) <= date &&
+                new Date(booking.dateTo) >= date
+            )
+              ? "booked"
+              : ""
+          }
+          tileDisabled={({ date, view }) =>
+            !bookings.some(
+              (booking) =>
+                new Date(booking.dateFrom) <= date &&
+                new Date(booking.dateTo) >= date
+            )
+          }
+        />
+      </div>
     </div>
   );
 };

@@ -2,11 +2,20 @@
     position: fixed;
     bottom: 100px;
     right: 50px;
-    z-index: 1000;
+    z-index: 10;
 }
 .create-btn {
-    background: orange;
-    border-radius: 50px;
-    width: 100px;
-    height: 100px;
+    background: #fff;
+    border-radius: 100px;
+    border: 1px solid #ff7f50;
+    padding: 1rem;
+    width: 125px;
+    height: 125px;
+    box-shadow: 4px 5px 9px #80808085;
+    transition: all 0.3s ease-in-out;
+}
+
+.create-btn:hover {
+    background: #ffd2c1f3;
+    rotate: -2deg;
 }

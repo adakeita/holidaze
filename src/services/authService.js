@@ -25,9 +25,7 @@ export const login = async (email, password) => {
 
 export const registerUser = async (userData) => {
   try {
-    console.log("Registering user with data:", userData); // Debug
     const response = await fetchAPI("auth/register", "POST", userData);
-    console.log("Registration response:", response.data); // Debug
     return response;
   } catch (error) {
     console.error("Registration failed:", error.message);

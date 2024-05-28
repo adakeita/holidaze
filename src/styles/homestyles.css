@@ -266,6 +266,7 @@ polaroid
 
 .VIEW-VENUES-SECTION {
     margin: 5em 0;
+    padding-bottom: 2em;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -366,4 +367,98 @@ polaroid
     rotate: 0;
 }
 
-/*bottom section*/
+@media screen and (max-width: 770px) {
+
+    .TOP-SECTION-WRAPPER {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .TOP-SECTION-TEXT-WRAPPER {
+        width: 100%;
+    }
+
+    .TOP-IMG-WRAPPER {
+        width: 100%;
+    }
+
+    .POLAROID {
+        width: 100%;
+        margin: 3rem 0 0;
+    }
+
+    .CUSTOMER-SECTION-WRAPPER {
+        margin: 2rem 0;
+        flex-direction: column;
+    }
+
+    .CUSTOMER-SECTION-STEPS {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .STEP-LINK {
+        margin: 1.5rem 0;
+    }
+
+    .ARROW-WRAPPER {
+        width: 15%;
+        margin: 1.5rem 0;
+    }
+
+    .ARROW-IMG {
+        rotate: 90deg;
+    }
+
+    .VENUE-SECTION-WRAPPER {
+        flex-direction: row;
+    }
+
+    .VENUE-STEPS-WRAPPER {
+        width: 100%;
+    }
+
+    .MIDDLE-SECTION-WRAPPER {
+        width: 100%;
+        margin: 3rem auto;
+        flex-direction: column;
+    }
+
+    .MIDDLE-IMG-WRAPPER {
+        width: 100%;
+    }
+
+    .MIDDLE-IMG-WRAPPER .POLAROID {
+        margin: 0;
+    }
+
+    .MIDDLE-SECTION-TEXT {
+        margin: 2.5rem 0;
+        width: 100%;
+    }
+
+    .VIEW-VENUES-SECTION {
+        margin: 2.5rem 0;
+        flex-direction: column;
+    }
+
+    .VIEW-VENUES-BUTTON-WRAPPER {
+        height: 500px;
+    }
+
+    .VIEW-VENUES-TEXT {
+        font-size: 3rem;
+    }
+
+    .VENUE-SECTION-WRAPPER {
+        margin: 2rem 0;
+       flex-direction: column;
+    }
+
+    .VENUE-STEPS-WRAPPER {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+}
+
