@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Calendar from "react-calendar";
 import { fetchVenueById } from "../../services/venueService";
+import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import "./ownedvenuecard.css";
 import "../../styles/react-calendar.css";
@@ -60,6 +61,12 @@ const OwnedVenueCard = ({
               <h2 id="cardheader" className="HEADER_OWNED-VENUECARD">
                 {venue.name}
               </h2>
+              <Link
+              to={`/venues/${venue.id}`}
+              className="VIEWMORE_BTN_OWNED-VENUECARD"
+            >
+              View more
+            </Link>
             </div>
             <div className="VENUE_DESC_WRAPPER_OWNED-VENUECARD">
               <p className="VENUE_DESC_OWNED-VENUECARD">{venue.description}</p>

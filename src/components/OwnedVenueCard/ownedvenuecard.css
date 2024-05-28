@@ -49,6 +49,22 @@
   -webkit-box-orient: vertical;
 }
 
+.VIEWMORE_BTN_OWNED-VENUECARD {
+  padding: 0.5rem 0rem;
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 2px #232729e6;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+}
+
+.VIEWMORE_BTN_OWNED-VENUECARD:hover {
+  text-decoration: underline;
+  scale: 1.05;
+  font-weight: bold;
+}
+
 .VENUE_DESC_OWNED-VENUECARD {
   font-size: 1rem;
   color: #666;
@@ -210,6 +226,10 @@
     padding: 0 1rem;
     display: flex;
     justify-content: space-between;
+  }
+
+.DELETE-BTN {
+ margin: 0 0.5rem;
   }
 
   .CALENDAR_WRAPPER {

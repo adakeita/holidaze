@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { createVenue } from "../../services/venueService";
 import { useAuth } from "../../contexts/AuthContext";
 import PropTypes from "prop-types";
@@ -68,87 +68,123 @@ const CreateVenueForm = ({ onClose }) => {
 
   return (
     <form className="create-venue-form" onSubmit={handleSubmit}>
-      <label>
-        Name:
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Description:
-        <textarea
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Address:
-        <input
-          type="text"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        City:
-        <input
-          type="text"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Country:
-        <input
-          type="text"
-          value={country}
-          onChange={(e) => setCountry(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Price per night:
-        <input
-          type="number"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Max guests:
-        <input
-          type="number"
-          value={maxGuests}
-          onChange={(e) => setMaxGuests(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Rating:
-        <input
-          type="number"
-          step="0.1"
-          value={rating}
-          onChange={(e) => setRating(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Image URL:
-        <input
-          type="text"
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
-          required
-        />
-      </label>
+      <label htmlFor="name">Name:</label>
+      <input
+        id="name"
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        required
+        aria-describedby="nameHelp"
+      />
+      <small id="nameHelp" className="form-text">
+        Enter the name of the venue.
+      </small>
+
+      <label htmlFor="description">Description:</label>
+      <textarea
+        id="description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        required
+        aria-describedby="descriptionHelp"
+      />
+      <small id="descriptionHelp" className="form-text">
+        Provide a brief description of the venue.
+      </small>
+
+      <label htmlFor="address">Address:</label>
+      <input
+        id="address"
+        type="text"
+        value={address}
+        onChange={(e) => setAddress(e.target.value)}
+        required
+        aria-describedby="addressHelp"
+      />
+      <small id="addressHelp" className="form-text">
+        Enter the venue's address.
+      </small>
+
+      <label htmlFor="city">City:</label>
+      <input
+        id="city"
+        type="text"
+        value={city}
+        onChange={(e) => setCity(e.target.value)}
+        required
+        aria-describedby="cityHelp"
+      />
+      <small id="cityHelp" className="form-text">
+        Enter the city where the venue is located.
+      </small>
+
+      <label htmlFor="country">Country:</label>
+      <input
+        id="country"
+        type="text"
+        value={country}
+        onChange={(e) => setCountry(e.target.value)}
+        required
+        aria-describedby="countryHelp"
+      />
+      <small id="countryHelp" className="form-text">
+        Enter the country where the venue is located.
+      </small>
+
+      <label htmlFor="price">Price per night:</label>
+      <input
+        id="price"
+        type="number"
+        value={price}
+        onChange={(e) => setPrice(e.target.value)}
+        required
+        aria-describedby="priceHelp"
+      />
+      <small id="priceHelp" className="form-text">
+        Enter the price per night.
+      </small>
+
+      <label htmlFor="maxGuests">Max guests:</label>
+      <input
+        id="maxGuests"
+        type="number"
+        value={maxGuests}
+        onChange={(e) => setMaxGuests(e.target.value)}
+        required
+        aria-describedby="maxGuestsHelp"
+      />
+      <small id="maxGuestsHelp" className="form-text">
+        Enter the maximum number of guests.
+      </small>
+
+      <label htmlFor="rating">Rating:</label>
+      <input
+        id="rating"
+        type="number"
+        step="0.1"
+        value={rating}
+        onChange={(e) => setRating(e.target.value)}
+        required
+        aria-describedby="ratingHelp"
+      />
+      <small id="ratingHelp" className="form-text">
+        Enter the rating for the venue.
+      </small>
+
+      <label htmlFor="image">Image URL:</label>
+      <input
+        id="image"
+        type="text"
+        value={image}
+        onChange={(e) => setImage(e.target.value)}
+        required
+        aria-describedby="imageHelp"
+      />
+      <small id="imageHelp" className="form-text">
+        Enter the URL for the venue image.
+      </small>
+
       <div className="amenities">
         <label>
           <input
