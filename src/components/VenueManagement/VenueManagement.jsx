@@ -10,7 +10,6 @@ import Modal from "../Modal/Modal";
 import FloatingBtn from "../FloatingBtn/FloatingBtn";
 import UpdateVenueForm from "../UpdateVenueForm/UpdateVenueForm";
 import CreateVenueForm from "../CreateVenueForm/CreateVenueForm";
-import { useAuth } from "../../contexts/AuthContext";
 import "./venuemanagement.css";
 
 const VenueManagement = () => {
